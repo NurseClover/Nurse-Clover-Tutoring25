@@ -1,1 +1,40 @@
-...
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>해부학 학습 로그인</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      text-align: center;
+      padding: 60px;
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+    button {
+      font-size: 18px;
+      padding: 12px 20px;
+      background: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #3367d6;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔐 해부학 학습 로그인</h1>
+  <p>Google 계정으로 로그인해주세요.</p>
+  <button id="googleLogin">Google 로그인</button>
+
+  <!-- Firebase 인증 처리 -->
+  <script type="module" src="auth.js"></script>
+</body>
+</html>
