@@ -1,8 +1,8 @@
-// Firebase SDK import
+// ✅ Firebase 설정
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 
-// Firebase 설정 (당신의 프로젝트 정보로 세팅)
+// 🔐 Firebase 프로젝트 설정
 const firebaseConfig = {
   apiKey: "AIzaSyByzEr81hS4o1fDAhLq2Jayaxs14qzAUdQ",
   authDomain: "jn-tutoring.firebaseapp.com",
@@ -13,30 +13,29 @@ const firebaseConfig = {
   measurementId: "G-RJYDD02SE2"
 };
 
-// Firebase 초기화
+// 🚀 Firebase 초기화
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
-// 로그인 버튼 이벤트 연결
+// ☑️ 승인된 사용자 이메일만 허용
+const allowedEmails = ["qkrwjddus1322@naver.com"]; // 추가 가능
+
 document.getElementById("googleLogin").addEventListener("click", () => {
   signInWithPopup(auth, provider)
     .then((result) => {
-      const email = result.user.email;
-      const name = result.user.displayName || "사용자";
-
-      // 승인된 이메일만 통과
-      const allowed = ["qkrwjddus1322@naver.com"];
-      if (!allowed.includes(email)) {
+      const user = result.user;
+      const email = user.email;
+      if (allowedEmails.includes(email)) {
+        localStorage.setItem("quiz_user", user.displayName);
+        alert(`${user.displayName}님, 환영합니다!`);
+        location.href = "home.html";
+      } else {
         alert("존재하지 않는 아이디입니다.");
-        return;
       }
-
-      localStorage.setItem("quiz_user", name);
-      location.href = "home.html";
     })
     .catch((error) => {
-      console.error("로그인 실패:", error);
-      alert("로그인 실패. 콘솔을 확인하세요.");
+      console.error("로그인 오류", error);
+      alert("로그인 중 오류가 발생했습니다.");
     });
 });
