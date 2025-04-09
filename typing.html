@@ -11,7 +11,14 @@
   <script src="shared.js"></script>
 </head>
 <body>
-  <div><button onclick="location.href='home.html'">🏠 홈으로</button></div>
+  <script>
+    if (!localStorage.getItem("quiz_user")) {
+      alert("로그인 후 이용 가능합니다.");
+      location.href = "login.html";
+    }
+  </script>
+
+  <div><button onclick="location.href='index.html'">🏠 홈으로</button></div>
   <h2>타자 연습 (한글 → 영어)</h2>
   <select id="chapterSelect">
     <option value="서론">서론</option>
