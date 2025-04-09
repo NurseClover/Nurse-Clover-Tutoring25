@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>해부학 퀴즈 (해설 카드 포함)</title>
+  <style>
+    body { font-family: Arial; text-align: center; background: #f8fafc; padding: 20px; }
+    button { padding: 8px 14px; margin: 6px; font-size: 15px; }
+    .question-box { background: white; border-radius: 10px; padding: 20px; max-width: 600px;
+      margin: 20px auto; box-shadow: 0 0 8px #ccc; }
+    .option { display: block; margin: 6px auto; width: 90%; max-width: 400px; }
+    .correct { color: green; }
+    .wrong { color: red; }
+    .result-card { background: #ffffff; border: 1px solid #ccc; border-radius: 10px;
+      margin: 10px auto; max-width: 600px; padding: 10px 16px; text-align: left; box-shadow: 0 0 6px #bbb; }
+    .toggle-explanation { margin-top: 6px; font-size: 13px; color: #0077cc; cursor: pointer; }
+    .hidden { display: none; }
+  </style>
+  <script src="shared.js"></script>
+</head>
+<body>
+  <script type="module" src="auth-check.js"></script>
+  <h2>해부학 랜덤 퀴즈 (설명 기반 포함)</h2>
+  <select id="chapterSelect">
+    <option value="서론">서론</option>
+    <option value="세포와조직">세포와조직</option>
+  </select>
+  <div id="quizContainer"></div>
+  <div id="scoreBoard"></div>
+  <div id="resultContainer"></div>
+
+  <script>
+    const chapterSelect = document.getElementById("chapterSelect");
+    const quizContainer = document.getElementById("quizContainer");
+    const scoreBoard = document.getElementById("scoreBoard");
+    const resultContainer = document.getElementById("resultContainer");
+
+    let questions = [], currentIndex = 0, score = 0, answers = [];
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function generateQuiz(chapter) {
+      const raw = flashcardsData[chapter];
+      const selected = shuffle([...raw]).slice(0, 15).map(entry => {
+        const type = Math.random();
+        let question, answer, explanation = entry.explanation || "", mode = "";
+        if (type < 0.33) {
+          question = entry.back; answer = entry.front; mode = "한글→영어";
+        } else if (type < 0.66) {
+          question = entry.front; answer = entry.back; mode = "영어→한글";
+        } else {
+          question = entry.explanation; answer = entry.front; mode = "설명→영어";
+        }
+        const options = shuffle([
+          answer,
+          ...shuffle(raw.filter(w => (w.front !== entry.front))).slice(0, 3)
+            .map(w => mode.includes("한글") ? w.back : w.front)
+        ]);
+        return { question, answer, choices: options, explanation, mode };
+      });
+      return selected;
+    }
+
+    function showQuestion() {
+      const q = questions[currentIndex];
+      const html = `
+        <div class="question-box">
+          <h3>Q${currentIndex + 1}. (${q.mode})</h3>
+          <div>${q.question}</div>
+          ${q.choices.map(choice =>
+            `<button class="option" onclick="checkAnswer('${choice.replace(/'/g, "\'")}')">${choice}</button>`).join('')}
+        </div>`;
+      quizContainer.innerHTML = html;
+      scoreBoard.textContent = `현재 점수: ${score} / ${currentIndex}`;
+    }
+
+    window.checkAnswer = function(choice) {
+      const q = questions[currentIndex];
+      const isCorrect = choice === q.answer;
+      if (isCorrect) score++;
+      answers.push({
+        question: q.question,
+        answer: q.answer,
+        selected: choice,
+        explanation: q.explanation,
+        correct: isCorrect,
+        mode: q.mode
+      });
+      currentIndex++;
+      if (currentIndex < questions.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    };
+
+    function showResult() {
+      quizContainer.innerHTML = "<h3>퀴즈 완료!</h3>";
+      scoreBoard.textContent = `최종 점수: ${score} / ${questions.length}`;
+      resultContainer.innerHTML = answers.map((a, i) => `
+        <div class="result-card">
+          <strong>Q${i + 1} (${a.mode})</strong><br/>
+          질문: ${a.question}<br/>
+          당신의 답: <span class="${a.correct ? 'correct' : 'wrong'}">${a.selected}</span><br/>
+          ${!a.correct ? `정답: <b>${a.answer}</b><br/>` : ""}
+          <span class="toggle-explanation" onclick="toggleExplain(this)">🔍 해설 보기</span>
+          <div class="hidden">${a.explanation}</div>
+        </div>
+      `).join('');
+    }
+
+    window.toggleExplain = function(btn) {
+      const hiddenDiv = btn.nextElementSibling;
+      hiddenDiv.classList.toggle("hidden");
+      btn.textContent = hiddenDiv.classList.contains("hidden") ? "🔍 해설 보기" : "🔽 해설 숨기기";
+    };
+
+    chapterSelect.addEventListener("change", () => {
+      score = 0;
+      currentIndex = 0;
+      answers = [];
+      questions = generateQuiz(chapterSelect.value);
+      resultContainer.innerHTML = "";
+      showQuestion();
+    });
+
+    questions = generateQuiz(chapterSelect.value);
+    showQuestion();
+  </script>
+</body>
+</html>
