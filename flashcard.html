@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>플래시카드</title>
+  <style>
+    body { font-family: Arial; text-align: center; padding: 20px; background: #eef2f5; }
+    .card { width: 300px; height: 200px; margin: 30px auto; padding: 20px;
+             background: white; border-radius: 10px; box-shadow: 0 0 10px #aaa;
+             display: flex; justify-content: center; align-items: center;
+             font-size: 22px; cursor: pointer; }
+  </style>
+  <script src="shared.js"></script>
+</head>
+<body>
+  <div><button onclick="location.href='home.html'">🏠 홈으로</button></div>
+  <h2>플래시카드</h2>
+  <select id="chapterSelect">
+    <option value="서론">서론</option>
+    <option value="세포와조직">세포와조직</option>
+  </select>
+  <div class="card" id="flashcard">영어</div>
+  <button onclick="prevCard()">이전</button>
+  <button onclick="nextCard()">다음</button>
+
+  <script>
+    let currentChapter = "서론";
+    let currentIndex = 0;
+    let flipped = false;
+    const card = document.getElementById("flashcard");
+
+    document.getElementById("chapterSelect").addEventListener("change", (e) => {
+      currentChapter = e.target.value;
+      currentIndex = 0;
+      flipped = false;
+      updateCard();
+    });
+
+    card.onclick = () => {
+      flipped = !flipped;
+      updateCard();
+    };
+
+    function updateCard() {
+      const data = flashcardsData[currentChapter][currentIndex];
+      card.textContent = flipped ? data.back : data.front;
+    }
+
+    function nextCard() {
+      if (currentIndex < flashcardsData[currentChapter].length - 1) {
+        currentIndex++; flipped = false; updateCard();
+      }
+    }
+    function prevCard() {
+      if (currentIndex > 0) {
+        currentIndex--; flipped = false; updateCard();
+      }
+    }
+    updateCard();
+  </script>
+</body>
+</html>

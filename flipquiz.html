@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>카드 뒤집기 퀴즈</title>
+  <style>
+    body { font-family: Arial; text-align: center; padding: 30px; background: #fffbe6; }
+    button { padding: 10px 16px; margin: 6px; font-size: 16px; }
+  </style>
+  <script src="shared.js"></script>
+</head>
+<body>
+  <div><button onclick="location.href='home.html'">🏠 홈으로</button></div>
+  <h2>카드 뒤집기 퀴즈</h2>
+  <select id="chapterSelect">
+    <option value="서론">서론</option>
+    <option value="세포와조직">세포와조직</option>
+  </select>
+  <div id="question" style="font-size:22px; margin:20px;"></div>
+  <div id="options"></div>
+  <div id="result"></div>
+
+  <script>
+    let currentChapter = "서론";
+    let questionEl = document.getElementById("question");
+    let optionsEl = document.getElementById("options");
+    let resultEl = document.getElementById("result");
+    let answer = "";
+
+    function shuffle(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function loadQuiz() {
+      const list = flashcardsData[currentChapter];
+      const q = list[Math.floor(Math.random() * list.length)];
+      answer = q.front;
+      questionEl.textContent = "다음의 뜻에 맞는 영어는? → " + q.back;
+      const options = shuffle([q.front, ...list.filter(w => w.front !== q.front).slice(0,3).map(w => w.front)]);
+      optionsEl.innerHTML = "";
+      options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.textContent = opt;
+        btn.onclick = () => {
+          resultEl.textContent = (opt === answer) ? "정답!" : "오답. 정답: " + answer;
+          setTimeout(loadQuiz, 1500);
+        };
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    document.getElementById("chapterSelect").addEventListener("change", (e) => {
+      currentChapter = e.target.value;
+      loadQuiz();
+    });
+
+    loadQuiz();
+  </script>
+</body>
+</html>
