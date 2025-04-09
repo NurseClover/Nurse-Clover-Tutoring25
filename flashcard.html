@@ -14,7 +14,15 @@
   <script src="shared.js"></script>
 </head>
 <body>
-  <div><button onclick="location.href='home.html'">🏠 홈으로</button></div>
+  <script>
+    // 로그인 여부 확인
+    if (!localStorage.getItem("quiz_user")) {
+      alert("로그인 후 이용 가능합니다.");
+      location.href = "login.html";
+    }
+  </script>
+
+  <div><button onclick="location.href='index.html'">🏠 홈으로</button></div>
   <h2>플래시카드</h2>
   <select id="chapterSelect">
     <option value="서론">서론</option>
@@ -57,6 +65,7 @@
         currentIndex--; flipped = false; updateCard();
       }
     }
+
     updateCard();
   </script>
 </body>
