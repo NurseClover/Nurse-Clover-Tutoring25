@@ -1,514 +1,542 @@
-const flashcardsData = {
-  "서론": [
-    { front: "Anatomy0", back: "해부학0", explanation: "신체 구조를 연구하는 학문 (예시 0)" },
-    { front: "Physiology1", back: "생리학1", explanation: "신체 기능을 연구하는 학문 (예시 1)" },
-    { front: "Homeostasis2", back: "항상성2", explanation: "신체 내부 환경을 일정하게 유지 (예시 2)" },
-    { front: "Anatomy3", back: "해부학3", explanation: "신체 구조를 연구하는 학문 (예시 3)" },
-    { front: "Physiology4", back: "생리학4", explanation: "신체 기능을 연구하는 학문 (예시 4)" },
-    { front: "Homeostasis5", back: "항상성5", explanation: "신체 내부 환경을 일정하게 유지 (예시 5)" },
-    { front: "Anatomy6", back: "해부학6", explanation: "신체 구조를 연구하는 학문 (예시 6)" },
-    { front: "Physiology7", back: "생리학7", explanation: "신체 기능을 연구하는 학문 (예시 7)" },
-    { front: "Homeostasis8", back: "항상성8", explanation: "신체 내부 환경을 일정하게 유지 (예시 8)" },
-    { front: "Anatomy9", back: "해부학9", explanation: "신체 구조를 연구하는 학문 (예시 9)" },
-    { front: "Physiology10", back: "생리학10", explanation: "신체 기능을 연구하는 학문 (예시 10)" },
-    { front: "Homeostasis11", back: "항상성11", explanation: "신체 내부 환경을 일정하게 유지 (예시 11)" },
-    { front: "Anatomy12", back: "해부학12", explanation: "신체 구조를 연구하는 학문 (예시 12)" },
-    { front: "Physiology13", back: "생리학13", explanation: "신체 기능을 연구하는 학문 (예시 13)" },
-    { front: "Homeostasis14", back: "항상성14", explanation: "신체 내부 환경을 일정하게 유지 (예시 14)" },
-    { front: "Anatomy15", back: "해부학15", explanation: "신체 구조를 연구하는 학문 (예시 15)" },
-    { front: "Physiology16", back: "생리학16", explanation: "신체 기능을 연구하는 학문 (예시 16)" },
-    { front: "Homeostasis17", back: "항상성17", explanation: "신체 내부 환경을 일정하게 유지 (예시 17)" },
-    { front: "Anatomy18", back: "해부학18", explanation: "신체 구조를 연구하는 학문 (예시 18)" },
-    { front: "Physiology19", back: "생리학19", explanation: "신체 기능을 연구하는 학문 (예시 19)" },
-    { front: "Homeostasis20", back: "항상성20", explanation: "신체 내부 환경을 일정하게 유지 (예시 20)" },
-    { front: "Anatomy21", back: "해부학21", explanation: "신체 구조를 연구하는 학문 (예시 21)" },
-    { front: "Physiology22", back: "생리학22", explanation: "신체 기능을 연구하는 학문 (예시 22)" },
-    { front: "Homeostasis23", back: "항상성23", explanation: "신체 내부 환경을 일정하게 유지 (예시 23)" },
-    { front: "Anatomy24", back: "해부학24", explanation: "신체 구조를 연구하는 학문 (예시 24)" },
-    { front: "Physiology25", back: "생리학25", explanation: "신체 기능을 연구하는 학문 (예시 25)" },
-    { front: "Homeostasis26", back: "항상성26", explanation: "신체 내부 환경을 일정하게 유지 (예시 26)" },
-    { front: "Anatomy27", back: "해부학27", explanation: "신체 구조를 연구하는 학문 (예시 27)" },
-    { front: "Physiology28", back: "생리학28", explanation: "신체 기능을 연구하는 학문 (예시 28)" },
-    { front: "Homeostasis29", back: "항상성29", explanation: "신체 내부 환경을 일정하게 유지 (예시 29)" },
-    { front: "Anatomy30", back: "해부학30", explanation: "신체 구조를 연구하는 학문 (예시 30)" },
-    { front: "Physiology31", back: "생리학31", explanation: "신체 기능을 연구하는 학문 (예시 31)" },
-    { front: "Homeostasis32", back: "항상성32", explanation: "신체 내부 환경을 일정하게 유지 (예시 32)" },
-    { front: "Anatomy33", back: "해부학33", explanation: "신체 구조를 연구하는 학문 (예시 33)" },
-    { front: "Physiology34", back: "생리학34", explanation: "신체 기능을 연구하는 학문 (예시 34)" },
-    { front: "Homeostasis35", back: "항상성35", explanation: "신체 내부 환경을 일정하게 유지 (예시 35)" },
-    { front: "Anatomy36", back: "해부학36", explanation: "신체 구조를 연구하는 학문 (예시 36)" },
-    { front: "Physiology37", back: "생리학37", explanation: "신체 기능을 연구하는 학문 (예시 37)" },
-    { front: "Homeostasis38", back: "항상성38", explanation: "신체 내부 환경을 일정하게 유지 (예시 38)" },
-    { front: "Anatomy39", back: "해부학39", explanation: "신체 구조를 연구하는 학문 (예시 39)" },
-    { front: "Physiology40", back: "생리학40", explanation: "신체 기능을 연구하는 학문 (예시 40)" },
-    { front: "Homeostasis41", back: "항상성41", explanation: "신체 내부 환경을 일정하게 유지 (예시 41)" },
-    { front: "Anatomy42", back: "해부학42", explanation: "신체 구조를 연구하는 학문 (예시 42)" },
-    { front: "Physiology43", back: "생리학43", explanation: "신체 기능을 연구하는 학문 (예시 43)" },
-    { front: "Homeostasis44", back: "항상성44", explanation: "신체 내부 환경을 일정하게 유지 (예시 44)" },
-    { front: "Anatomy45", back: "해부학45", explanation: "신체 구조를 연구하는 학문 (예시 45)" },
-    { front: "Physiology46", back: "생리학46", explanation: "신체 기능을 연구하는 학문 (예시 46)" },
-    { front: "Homeostasis47", back: "항상성47", explanation: "신체 내부 환경을 일정하게 유지 (예시 47)" },
-    { front: "Anatomy48", back: "해부학48", explanation: "신체 구조를 연구하는 학문 (예시 48)" },
-    { front: "Physiology49", back: "생리학49", explanation: "신체 기능을 연구하는 학문 (예시 49)" },
-  ],
-  "세포와조직": [
-    { front: "Cell0", back: "세포0", explanation: "생명체의 기본 단위 (예시 0)" },
-    { front: "Nucleus1", back: "핵1", explanation: "유전 정보를 담는 핵심 기관 (예시 1)" },
-    { front: "Mitochondria2", back: "미토콘드리아2", explanation: "에너지 생산소 기관 (예시 2)" },
-    { front: "Cell3", back: "세포3", explanation: "생명체의 기본 단위 (예시 3)" },
-    { front: "Nucleus4", back: "핵4", explanation: "유전 정보를 담는 핵심 기관 (예시 4)" },
-    { front: "Mitochondria5", back: "미토콘드리아5", explanation: "에너지 생산소 기관 (예시 5)" },
-    { front: "Cell6", back: "세포6", explanation: "생명체의 기본 단위 (예시 6)" },
-    { front: "Nucleus7", back: "핵7", explanation: "유전 정보를 담는 핵심 기관 (예시 7)" },
-    { front: "Mitochondria8", back: "미토콘드리아8", explanation: "에너지 생산소 기관 (예시 8)" },
-    { front: "Cell9", back: "세포9", explanation: "생명체의 기본 단위 (예시 9)" },
-    { front: "Nucleus10", back: "핵10", explanation: "유전 정보를 담는 핵심 기관 (예시 10)" },
-    { front: "Mitochondria11", back: "미토콘드리아11", explanation: "에너지 생산소 기관 (예시 11)" },
-    { front: "Cell12", back: "세포12", explanation: "생명체의 기본 단위 (예시 12)" },
-    { front: "Nucleus13", back: "핵13", explanation: "유전 정보를 담는 핵심 기관 (예시 13)" },
-    { front: "Mitochondria14", back: "미토콘드리아14", explanation: "에너지 생산소 기관 (예시 14)" },
-    { front: "Cell15", back: "세포15", explanation: "생명체의 기본 단위 (예시 15)" },
-    { front: "Nucleus16", back: "핵16", explanation: "유전 정보를 담는 핵심 기관 (예시 16)" },
-    { front: "Mitochondria17", back: "미토콘드리아17", explanation: "에너지 생산소 기관 (예시 17)" },
-    { front: "Cell18", back: "세포18", explanation: "생명체의 기본 단위 (예시 18)" },
-    { front: "Nucleus19", back: "핵19", explanation: "유전 정보를 담는 핵심 기관 (예시 19)" },
-    { front: "Mitochondria20", back: "미토콘드리아20", explanation: "에너지 생산소 기관 (예시 20)" },
-    { front: "Cell21", back: "세포21", explanation: "생명체의 기본 단위 (예시 21)" },
-    { front: "Nucleus22", back: "핵22", explanation: "유전 정보를 담는 핵심 기관 (예시 22)" },
-    { front: "Mitochondria23", back: "미토콘드리아23", explanation: "에너지 생산소 기관 (예시 23)" },
-    { front: "Cell24", back: "세포24", explanation: "생명체의 기본 단위 (예시 24)" },
-    { front: "Nucleus25", back: "핵25", explanation: "유전 정보를 담는 핵심 기관 (예시 25)" },
-    { front: "Mitochondria26", back: "미토콘드리아26", explanation: "에너지 생산소 기관 (예시 26)" },
-    { front: "Cell27", back: "세포27", explanation: "생명체의 기본 단위 (예시 27)" },
-    { front: "Nucleus28", back: "핵28", explanation: "유전 정보를 담는 핵심 기관 (예시 28)" },
-    { front: "Mitochondria29", back: "미토콘드리아29", explanation: "에너지 생산소 기관 (예시 29)" },
-    { front: "Cell30", back: "세포30", explanation: "생명체의 기본 단위 (예시 30)" },
-    { front: "Nucleus31", back: "핵31", explanation: "유전 정보를 담는 핵심 기관 (예시 31)" },
-    { front: "Mitochondria32", back: "미토콘드리아32", explanation: "에너지 생산소 기관 (예시 32)" },
-    { front: "Cell33", back: "세포33", explanation: "생명체의 기본 단위 (예시 33)" },
-    { front: "Nucleus34", back: "핵34", explanation: "유전 정보를 담는 핵심 기관 (예시 34)" },
-    { front: "Mitochondria35", back: "미토콘드리아35", explanation: "에너지 생산소 기관 (예시 35)" },
-    { front: "Cell36", back: "세포36", explanation: "생명체의 기본 단위 (예시 36)" },
-    { front: "Nucleus37", back: "핵37", explanation: "유전 정보를 담는 핵심 기관 (예시 37)" },
-    { front: "Mitochondria38", back: "미토콘드리아38", explanation: "에너지 생산소 기관 (예시 38)" },
-    { front: "Cell39", back: "세포39", explanation: "생명체의 기본 단위 (예시 39)" },
-    { front: "Nucleus40", back: "핵40", explanation: "유전 정보를 담는 핵심 기관 (예시 40)" },
-    { front: "Mitochondria41", back: "미토콘드리아41", explanation: "에너지 생산소 기관 (예시 41)" },
-    { front: "Cell42", back: "세포42", explanation: "생명체의 기본 단위 (예시 42)" },
-    { front: "Nucleus43", back: "핵43", explanation: "유전 정보를 담는 핵심 기관 (예시 43)" },
-    { front: "Mitochondria44", back: "미토콘드리아44", explanation: "에너지 생산소 기관 (예시 44)" },
-    { front: "Cell45", back: "세포45", explanation: "생명체의 기본 단위 (예시 45)" },
-    { front: "Nucleus46", back: "핵46", explanation: "유전 정보를 담는 핵심 기관 (예시 46)" },
-    { front: "Mitochondria47", back: "미토콘드리아47", explanation: "에너지 생산소 기관 (예시 47)" },
-    { front: "Cell48", back: "세포48", explanation: "생명체의 기본 단위 (예시 48)" },
-    { front: "Nucleus49", back: "핵49", explanation: "유전 정보를 담는 핵심 기관 (예시 49)" },
-  ],
-  "뼈대계통": [
-    { front: "Femur0", back: "대퇴골0", explanation: "가장 긴 다리 뼈 (예시 0)" },
-    { front: "Humerus1", back: "상완골1", explanation: "팔 위쪽 뼈 (예시 1)" },
-    { front: "Tibia2", back: "정강이뼈2", explanation: "다리 아래쪽의 뼈 (예시 2)" },
-    { front: "Femur3", back: "대퇴골3", explanation: "가장 긴 다리 뼈 (예시 3)" },
-    { front: "Humerus4", back: "상완골4", explanation: "팔 위쪽 뼈 (예시 4)" },
-    { front: "Tibia5", back: "정강이뼈5", explanation: "다리 아래쪽의 뼈 (예시 5)" },
-    { front: "Femur6", back: "대퇴골6", explanation: "가장 긴 다리 뼈 (예시 6)" },
-    { front: "Humerus7", back: "상완골7", explanation: "팔 위쪽 뼈 (예시 7)" },
-    { front: "Tibia8", back: "정강이뼈8", explanation: "다리 아래쪽의 뼈 (예시 8)" },
-    { front: "Femur9", back: "대퇴골9", explanation: "가장 긴 다리 뼈 (예시 9)" },
-    { front: "Humerus10", back: "상완골10", explanation: "팔 위쪽 뼈 (예시 10)" },
-    { front: "Tibia11", back: "정강이뼈11", explanation: "다리 아래쪽의 뼈 (예시 11)" },
-    { front: "Femur12", back: "대퇴골12", explanation: "가장 긴 다리 뼈 (예시 12)" },
-    { front: "Humerus13", back: "상완골13", explanation: "팔 위쪽 뼈 (예시 13)" },
-    { front: "Tibia14", back: "정강이뼈14", explanation: "다리 아래쪽의 뼈 (예시 14)" },
-    { front: "Femur15", back: "대퇴골15", explanation: "가장 긴 다리 뼈 (예시 15)" },
-    { front: "Humerus16", back: "상완골16", explanation: "팔 위쪽 뼈 (예시 16)" },
-    { front: "Tibia17", back: "정강이뼈17", explanation: "다리 아래쪽의 뼈 (예시 17)" },
-    { front: "Femur18", back: "대퇴골18", explanation: "가장 긴 다리 뼈 (예시 18)" },
-    { front: "Humerus19", back: "상완골19", explanation: "팔 위쪽 뼈 (예시 19)" },
-    { front: "Tibia20", back: "정강이뼈20", explanation: "다리 아래쪽의 뼈 (예시 20)" },
-    { front: "Femur21", back: "대퇴골21", explanation: "가장 긴 다리 뼈 (예시 21)" },
-    { front: "Humerus22", back: "상완골22", explanation: "팔 위쪽 뼈 (예시 22)" },
-    { front: "Tibia23", back: "정강이뼈23", explanation: "다리 아래쪽의 뼈 (예시 23)" },
-    { front: "Femur24", back: "대퇴골24", explanation: "가장 긴 다리 뼈 (예시 24)" },
-    { front: "Humerus25", back: "상완골25", explanation: "팔 위쪽 뼈 (예시 25)" },
-    { front: "Tibia26", back: "정강이뼈26", explanation: "다리 아래쪽의 뼈 (예시 26)" },
-    { front: "Femur27", back: "대퇴골27", explanation: "가장 긴 다리 뼈 (예시 27)" },
-    { front: "Humerus28", back: "상완골28", explanation: "팔 위쪽 뼈 (예시 28)" },
-    { front: "Tibia29", back: "정강이뼈29", explanation: "다리 아래쪽의 뼈 (예시 29)" },
-    { front: "Femur30", back: "대퇴골30", explanation: "가장 긴 다리 뼈 (예시 30)" },
-    { front: "Humerus31", back: "상완골31", explanation: "팔 위쪽 뼈 (예시 31)" },
-    { front: "Tibia32", back: "정강이뼈32", explanation: "다리 아래쪽의 뼈 (예시 32)" },
-    { front: "Femur33", back: "대퇴골33", explanation: "가장 긴 다리 뼈 (예시 33)" },
-    { front: "Humerus34", back: "상완골34", explanation: "팔 위쪽 뼈 (예시 34)" },
-    { front: "Tibia35", back: "정강이뼈35", explanation: "다리 아래쪽의 뼈 (예시 35)" },
-    { front: "Femur36", back: "대퇴골36", explanation: "가장 긴 다리 뼈 (예시 36)" },
-    { front: "Humerus37", back: "상완골37", explanation: "팔 위쪽 뼈 (예시 37)" },
-    { front: "Tibia38", back: "정강이뼈38", explanation: "다리 아래쪽의 뼈 (예시 38)" },
-    { front: "Femur39", back: "대퇴골39", explanation: "가장 긴 다리 뼈 (예시 39)" },
-    { front: "Humerus40", back: "상완골40", explanation: "팔 위쪽 뼈 (예시 40)" },
-    { front: "Tibia41", back: "정강이뼈41", explanation: "다리 아래쪽의 뼈 (예시 41)" },
-    { front: "Femur42", back: "대퇴골42", explanation: "가장 긴 다리 뼈 (예시 42)" },
-    { front: "Humerus43", back: "상완골43", explanation: "팔 위쪽 뼈 (예시 43)" },
-    { front: "Tibia44", back: "정강이뼈44", explanation: "다리 아래쪽의 뼈 (예시 44)" },
-    { front: "Femur45", back: "대퇴골45", explanation: "가장 긴 다리 뼈 (예시 45)" },
-    { front: "Humerus46", back: "상완골46", explanation: "팔 위쪽 뼈 (예시 46)" },
-    { front: "Tibia47", back: "정강이뼈47", explanation: "다리 아래쪽의 뼈 (예시 47)" },
-    { front: "Femur48", back: "대퇴골48", explanation: "가장 긴 다리 뼈 (예시 48)" },
-    { front: "Humerus49", back: "상완골49", explanation: "팔 위쪽 뼈 (예시 49)" },
-    { front: "Tibia50", back: "정강이뼈50", explanation: "다리 아래쪽의 뼈 (예시 50)" },
-    { front: "Femur51", back: "대퇴골51", explanation: "가장 긴 다리 뼈 (예시 51)" },
-    { front: "Humerus52", back: "상완골52", explanation: "팔 위쪽 뼈 (예시 52)" },
-    { front: "Tibia53", back: "정강이뼈53", explanation: "다리 아래쪽의 뼈 (예시 53)" },
-    { front: "Femur54", back: "대퇴골54", explanation: "가장 긴 다리 뼈 (예시 54)" },
-    { front: "Humerus55", back: "상완골55", explanation: "팔 위쪽 뼈 (예시 55)" },
-    { front: "Tibia56", back: "정강이뼈56", explanation: "다리 아래쪽의 뼈 (예시 56)" },
-    { front: "Femur57", back: "대퇴골57", explanation: "가장 긴 다리 뼈 (예시 57)" },
-    { front: "Humerus58", back: "상완골58", explanation: "팔 위쪽 뼈 (예시 58)" },
-    { front: "Tibia59", back: "정강이뼈59", explanation: "다리 아래쪽의 뼈 (예시 59)" },
-    { front: "Femur60", back: "대퇴골60", explanation: "가장 긴 다리 뼈 (예시 60)" },
-    { front: "Humerus61", back: "상완골61", explanation: "팔 위쪽 뼈 (예시 61)" },
-    { front: "Tibia62", back: "정강이뼈62", explanation: "다리 아래쪽의 뼈 (예시 62)" },
-    { front: "Femur63", back: "대퇴골63", explanation: "가장 긴 다리 뼈 (예시 63)" },
-    { front: "Humerus64", back: "상완골64", explanation: "팔 위쪽 뼈 (예시 64)" },
-    { front: "Tibia65", back: "정강이뼈65", explanation: "다리 아래쪽의 뼈 (예시 65)" },
-    { front: "Femur66", back: "대퇴골66", explanation: "가장 긴 다리 뼈 (예시 66)" },
-    { front: "Humerus67", back: "상완골67", explanation: "팔 위쪽 뼈 (예시 67)" },
-    { front: "Tibia68", back: "정강이뼈68", explanation: "다리 아래쪽의 뼈 (예시 68)" },
-    { front: "Femur69", back: "대퇴골69", explanation: "가장 긴 다리 뼈 (예시 69)" },
-    { front: "Humerus70", back: "상완골70", explanation: "팔 위쪽 뼈 (예시 70)" },
-    { front: "Tibia71", back: "정강이뼈71", explanation: "다리 아래쪽의 뼈 (예시 71)" },
-    { front: "Femur72", back: "대퇴골72", explanation: "가장 긴 다리 뼈 (예시 72)" },
-    { front: "Humerus73", back: "상완골73", explanation: "팔 위쪽 뼈 (예시 73)" },
-    { front: "Tibia74", back: "정강이뼈74", explanation: "다리 아래쪽의 뼈 (예시 74)" },
-    { front: "Femur75", back: "대퇴골75", explanation: "가장 긴 다리 뼈 (예시 75)" },
-    { front: "Humerus76", back: "상완골76", explanation: "팔 위쪽 뼈 (예시 76)" },
-    { front: "Tibia77", back: "정강이뼈77", explanation: "다리 아래쪽의 뼈 (예시 77)" },
-    { front: "Femur78", back: "대퇴골78", explanation: "가장 긴 다리 뼈 (예시 78)" },
-    { front: "Humerus79", back: "상완골79", explanation: "팔 위쪽 뼈 (예시 79)" },
-    { front: "Tibia80", back: "정강이뼈80", explanation: "다리 아래쪽의 뼈 (예시 80)" },
-    { front: "Femur81", back: "대퇴골81", explanation: "가장 긴 다리 뼈 (예시 81)" },
-    { front: "Humerus82", back: "상완골82", explanation: "팔 위쪽 뼈 (예시 82)" },
-    { front: "Tibia83", back: "정강이뼈83", explanation: "다리 아래쪽의 뼈 (예시 83)" },
-    { front: "Femur84", back: "대퇴골84", explanation: "가장 긴 다리 뼈 (예시 84)" },
-    { front: "Humerus85", back: "상완골85", explanation: "팔 위쪽 뼈 (예시 85)" },
-    { front: "Tibia86", back: "정강이뼈86", explanation: "다리 아래쪽의 뼈 (예시 86)" },
-    { front: "Femur87", back: "대퇴골87", explanation: "가장 긴 다리 뼈 (예시 87)" },
-    { front: "Humerus88", back: "상완골88", explanation: "팔 위쪽 뼈 (예시 88)" },
-    { front: "Tibia89", back: "정강이뼈89", explanation: "다리 아래쪽의 뼈 (예시 89)" },
-    { front: "Femur90", back: "대퇴골90", explanation: "가장 긴 다리 뼈 (예시 90)" },
-    { front: "Humerus91", back: "상완골91", explanation: "팔 위쪽 뼈 (예시 91)" },
-    { front: "Tibia92", back: "정강이뼈92", explanation: "다리 아래쪽의 뼈 (예시 92)" },
-    { front: "Femur93", back: "대퇴골93", explanation: "가장 긴 다리 뼈 (예시 93)" },
-    { front: "Humerus94", back: "상완골94", explanation: "팔 위쪽 뼈 (예시 94)" },
-    { front: "Tibia95", back: "정강이뼈95", explanation: "다리 아래쪽의 뼈 (예시 95)" },
-    { front: "Femur96", back: "대퇴골96", explanation: "가장 긴 다리 뼈 (예시 96)" },
-    { front: "Humerus97", back: "상완골97", explanation: "팔 위쪽 뼈 (예시 97)" },
-    { front: "Tibia98", back: "정강이뼈98", explanation: "다리 아래쪽의 뼈 (예시 98)" },
-    { front: "Femur99", back: "대퇴골99", explanation: "가장 긴 다리 뼈 (예시 99)" },
-  ],
-  "관절계통": [
-    { front: "Synovial joint0", back: "윤활관절0", explanation: "움직임이 많은 관절 (예시 0)" },
-    { front: "Ligament1", back: "인대1", explanation: "뼈와 뼈를 연결 (예시 1)" },
-    { front: "Cartilage2", back: "연골2", explanation: "충격 흡수 조직 (예시 2)" },
-    { front: "Synovial joint3", back: "윤활관절3", explanation: "움직임이 많은 관절 (예시 3)" },
-    { front: "Ligament4", back: "인대4", explanation: "뼈와 뼈를 연결 (예시 4)" },
-    { front: "Cartilage5", back: "연골5", explanation: "충격 흡수 조직 (예시 5)" },
-    { front: "Synovial joint6", back: "윤활관절6", explanation: "움직임이 많은 관절 (예시 6)" },
-    { front: "Ligament7", back: "인대7", explanation: "뼈와 뼈를 연결 (예시 7)" },
-    { front: "Cartilage8", back: "연골8", explanation: "충격 흡수 조직 (예시 8)" },
-    { front: "Synovial joint9", back: "윤활관절9", explanation: "움직임이 많은 관절 (예시 9)" },
-    { front: "Ligament10", back: "인대10", explanation: "뼈와 뼈를 연결 (예시 10)" },
-    { front: "Cartilage11", back: "연골11", explanation: "충격 흡수 조직 (예시 11)" },
-    { front: "Synovial joint12", back: "윤활관절12", explanation: "움직임이 많은 관절 (예시 12)" },
-    { front: "Ligament13", back: "인대13", explanation: "뼈와 뼈를 연결 (예시 13)" },
-    { front: "Cartilage14", back: "연골14", explanation: "충격 흡수 조직 (예시 14)" },
-    { front: "Synovial joint15", back: "윤활관절15", explanation: "움직임이 많은 관절 (예시 15)" },
-    { front: "Ligament16", back: "인대16", explanation: "뼈와 뼈를 연결 (예시 16)" },
-    { front: "Cartilage17", back: "연골17", explanation: "충격 흡수 조직 (예시 17)" },
-    { front: "Synovial joint18", back: "윤활관절18", explanation: "움직임이 많은 관절 (예시 18)" },
-    { front: "Ligament19", back: "인대19", explanation: "뼈와 뼈를 연결 (예시 19)" },
-    { front: "Cartilage20", back: "연골20", explanation: "충격 흡수 조직 (예시 20)" },
-    { front: "Synovial joint21", back: "윤활관절21", explanation: "움직임이 많은 관절 (예시 21)" },
-    { front: "Ligament22", back: "인대22", explanation: "뼈와 뼈를 연결 (예시 22)" },
-    { front: "Cartilage23", back: "연골23", explanation: "충격 흡수 조직 (예시 23)" },
-    { front: "Synovial joint24", back: "윤활관절24", explanation: "움직임이 많은 관절 (예시 24)" },
-    { front: "Ligament25", back: "인대25", explanation: "뼈와 뼈를 연결 (예시 25)" },
-    { front: "Cartilage26", back: "연골26", explanation: "충격 흡수 조직 (예시 26)" },
-    { front: "Synovial joint27", back: "윤활관절27", explanation: "움직임이 많은 관절 (예시 27)" },
-    { front: "Ligament28", back: "인대28", explanation: "뼈와 뼈를 연결 (예시 28)" },
-    { front: "Cartilage29", back: "연골29", explanation: "충격 흡수 조직 (예시 29)" },
-    { front: "Synovial joint30", back: "윤활관절30", explanation: "움직임이 많은 관절 (예시 30)" },
-    { front: "Ligament31", back: "인대31", explanation: "뼈와 뼈를 연결 (예시 31)" },
-    { front: "Cartilage32", back: "연골32", explanation: "충격 흡수 조직 (예시 32)" },
-    { front: "Synovial joint33", back: "윤활관절33", explanation: "움직임이 많은 관절 (예시 33)" },
-    { front: "Ligament34", back: "인대34", explanation: "뼈와 뼈를 연결 (예시 34)" },
-    { front: "Cartilage35", back: "연골35", explanation: "충격 흡수 조직 (예시 35)" },
-    { front: "Synovial joint36", back: "윤활관절36", explanation: "움직임이 많은 관절 (예시 36)" },
-    { front: "Ligament37", back: "인대37", explanation: "뼈와 뼈를 연결 (예시 37)" },
-    { front: "Cartilage38", back: "연골38", explanation: "충격 흡수 조직 (예시 38)" },
-    { front: "Synovial joint39", back: "윤활관절39", explanation: "움직임이 많은 관절 (예시 39)" },
-    { front: "Ligament40", back: "인대40", explanation: "뼈와 뼈를 연결 (예시 40)" },
-    { front: "Cartilage41", back: "연골41", explanation: "충격 흡수 조직 (예시 41)" },
-    { front: "Synovial joint42", back: "윤활관절42", explanation: "움직임이 많은 관절 (예시 42)" },
-    { front: "Ligament43", back: "인대43", explanation: "뼈와 뼈를 연결 (예시 43)" },
-    { front: "Cartilage44", back: "연골44", explanation: "충격 흡수 조직 (예시 44)" },
-    { front: "Synovial joint45", back: "윤활관절45", explanation: "움직임이 많은 관절 (예시 45)" },
-    { front: "Ligament46", back: "인대46", explanation: "뼈와 뼈를 연결 (예시 46)" },
-    { front: "Cartilage47", back: "연골47", explanation: "충격 흡수 조직 (예시 47)" },
-    { front: "Synovial joint48", back: "윤활관절48", explanation: "움직임이 많은 관절 (예시 48)" },
-    { front: "Ligament49", back: "인대49", explanation: "뼈와 뼈를 연결 (예시 49)" },
-    { front: "Cartilage50", back: "연골50", explanation: "충격 흡수 조직 (예시 50)" },
-    { front: "Synovial joint51", back: "윤활관절51", explanation: "움직임이 많은 관절 (예시 51)" },
-    { front: "Ligament52", back: "인대52", explanation: "뼈와 뼈를 연결 (예시 52)" },
-    { front: "Cartilage53", back: "연골53", explanation: "충격 흡수 조직 (예시 53)" },
-    { front: "Synovial joint54", back: "윤활관절54", explanation: "움직임이 많은 관절 (예시 54)" },
-    { front: "Ligament55", back: "인대55", explanation: "뼈와 뼈를 연결 (예시 55)" },
-    { front: "Cartilage56", back: "연골56", explanation: "충격 흡수 조직 (예시 56)" },
-    { front: "Synovial joint57", back: "윤활관절57", explanation: "움직임이 많은 관절 (예시 57)" },
-    { front: "Ligament58", back: "인대58", explanation: "뼈와 뼈를 연결 (예시 58)" },
-    { front: "Cartilage59", back: "연골59", explanation: "충격 흡수 조직 (예시 59)" },
-    { front: "Synovial joint60", back: "윤활관절60", explanation: "움직임이 많은 관절 (예시 60)" },
-    { front: "Ligament61", back: "인대61", explanation: "뼈와 뼈를 연결 (예시 61)" },
-    { front: "Cartilage62", back: "연골62", explanation: "충격 흡수 조직 (예시 62)" },
-    { front: "Synovial joint63", back: "윤활관절63", explanation: "움직임이 많은 관절 (예시 63)" },
-    { front: "Ligament64", back: "인대64", explanation: "뼈와 뼈를 연결 (예시 64)" },
-    { front: "Cartilage65", back: "연골65", explanation: "충격 흡수 조직 (예시 65)" },
-    { front: "Synovial joint66", back: "윤활관절66", explanation: "움직임이 많은 관절 (예시 66)" },
-    { front: "Ligament67", back: "인대67", explanation: "뼈와 뼈를 연결 (예시 67)" },
-    { front: "Cartilage68", back: "연골68", explanation: "충격 흡수 조직 (예시 68)" },
-    { front: "Synovial joint69", back: "윤활관절69", explanation: "움직임이 많은 관절 (예시 69)" },
-    { front: "Ligament70", back: "인대70", explanation: "뼈와 뼈를 연결 (예시 70)" },
-    { front: "Cartilage71", back: "연골71", explanation: "충격 흡수 조직 (예시 71)" },
-    { front: "Synovial joint72", back: "윤활관절72", explanation: "움직임이 많은 관절 (예시 72)" },
-    { front: "Ligament73", back: "인대73", explanation: "뼈와 뼈를 연결 (예시 73)" },
-    { front: "Cartilage74", back: "연골74", explanation: "충격 흡수 조직 (예시 74)" },
-    { front: "Synovial joint75", back: "윤활관절75", explanation: "움직임이 많은 관절 (예시 75)" },
-    { front: "Ligament76", back: "인대76", explanation: "뼈와 뼈를 연결 (예시 76)" },
-    { front: "Cartilage77", back: "연골77", explanation: "충격 흡수 조직 (예시 77)" },
-    { front: "Synovial joint78", back: "윤활관절78", explanation: "움직임이 많은 관절 (예시 78)" },
-    { front: "Ligament79", back: "인대79", explanation: "뼈와 뼈를 연결 (예시 79)" },
-    { front: "Cartilage80", back: "연골80", explanation: "충격 흡수 조직 (예시 80)" },
-    { front: "Synovial joint81", back: "윤활관절81", explanation: "움직임이 많은 관절 (예시 81)" },
-    { front: "Ligament82", back: "인대82", explanation: "뼈와 뼈를 연결 (예시 82)" },
-    { front: "Cartilage83", back: "연골83", explanation: "충격 흡수 조직 (예시 83)" },
-    { front: "Synovial joint84", back: "윤활관절84", explanation: "움직임이 많은 관절 (예시 84)" },
-    { front: "Ligament85", back: "인대85", explanation: "뼈와 뼈를 연결 (예시 85)" },
-    { front: "Cartilage86", back: "연골86", explanation: "충격 흡수 조직 (예시 86)" },
-    { front: "Synovial joint87", back: "윤활관절87", explanation: "움직임이 많은 관절 (예시 87)" },
-    { front: "Ligament88", back: "인대88", explanation: "뼈와 뼈를 연결 (예시 88)" },
-    { front: "Cartilage89", back: "연골89", explanation: "충격 흡수 조직 (예시 89)" },
-    { front: "Synovial joint90", back: "윤활관절90", explanation: "움직임이 많은 관절 (예시 90)" },
-    { front: "Ligament91", back: "인대91", explanation: "뼈와 뼈를 연결 (예시 91)" },
-    { front: "Cartilage92", back: "연골92", explanation: "충격 흡수 조직 (예시 92)" },
-    { front: "Synovial joint93", back: "윤활관절93", explanation: "움직임이 많은 관절 (예시 93)" },
-    { front: "Ligament94", back: "인대94", explanation: "뼈와 뼈를 연결 (예시 94)" },
-    { front: "Cartilage95", back: "연골95", explanation: "충격 흡수 조직 (예시 95)" },
-    { front: "Synovial joint96", back: "윤활관절96", explanation: "움직임이 많은 관절 (예시 96)" },
-    { front: "Ligament97", back: "인대97", explanation: "뼈와 뼈를 연결 (예시 97)" },
-    { front: "Cartilage98", back: "연골98", explanation: "충격 흡수 조직 (예시 98)" },
-    { front: "Synovial joint99", back: "윤활관절99", explanation: "움직임이 많은 관절 (예시 99)" },
-  ],
-  "근육계통": [
-    { front: "Biceps brachii0", back: "이두근0", explanation: "팔을 굽히는 근육 (예시 0)" },
-    { front: "Triceps brachii1", back: "삼두근1", explanation: "팔을 펴는 근육 (예시 1)" },
-    { front: "Skeletal muscle2", back: "골격근2", explanation: "수의적 근육 (예시 2)" },
-    { front: "Biceps brachii3", back: "이두근3", explanation: "팔을 굽히는 근육 (예시 3)" },
-    { front: "Triceps brachii4", back: "삼두근4", explanation: "팔을 펴는 근육 (예시 4)" },
-    { front: "Skeletal muscle5", back: "골격근5", explanation: "수의적 근육 (예시 5)" },
-    { front: "Biceps brachii6", back: "이두근6", explanation: "팔을 굽히는 근육 (예시 6)" },
-    { front: "Triceps brachii7", back: "삼두근7", explanation: "팔을 펴는 근육 (예시 7)" },
-    { front: "Skeletal muscle8", back: "골격근8", explanation: "수의적 근육 (예시 8)" },
-    { front: "Biceps brachii9", back: "이두근9", explanation: "팔을 굽히는 근육 (예시 9)" },
-    { front: "Triceps brachii10", back: "삼두근10", explanation: "팔을 펴는 근육 (예시 10)" },
-    { front: "Skeletal muscle11", back: "골격근11", explanation: "수의적 근육 (예시 11)" },
-    { front: "Biceps brachii12", back: "이두근12", explanation: "팔을 굽히는 근육 (예시 12)" },
-    { front: "Triceps brachii13", back: "삼두근13", explanation: "팔을 펴는 근육 (예시 13)" },
-    { front: "Skeletal muscle14", back: "골격근14", explanation: "수의적 근육 (예시 14)" },
-    { front: "Biceps brachii15", back: "이두근15", explanation: "팔을 굽히는 근육 (예시 15)" },
-    { front: "Triceps brachii16", back: "삼두근16", explanation: "팔을 펴는 근육 (예시 16)" },
-    { front: "Skeletal muscle17", back: "골격근17", explanation: "수의적 근육 (예시 17)" },
-    { front: "Biceps brachii18", back: "이두근18", explanation: "팔을 굽히는 근육 (예시 18)" },
-    { front: "Triceps brachii19", back: "삼두근19", explanation: "팔을 펴는 근육 (예시 19)" },
-    { front: "Skeletal muscle20", back: "골격근20", explanation: "수의적 근육 (예시 20)" },
-    { front: "Biceps brachii21", back: "이두근21", explanation: "팔을 굽히는 근육 (예시 21)" },
-    { front: "Triceps brachii22", back: "삼두근22", explanation: "팔을 펴는 근육 (예시 22)" },
-    { front: "Skeletal muscle23", back: "골격근23", explanation: "수의적 근육 (예시 23)" },
-    { front: "Biceps brachii24", back: "이두근24", explanation: "팔을 굽히는 근육 (예시 24)" },
-    { front: "Triceps brachii25", back: "삼두근25", explanation: "팔을 펴는 근육 (예시 25)" },
-    { front: "Skeletal muscle26", back: "골격근26", explanation: "수의적 근육 (예시 26)" },
-    { front: "Biceps brachii27", back: "이두근27", explanation: "팔을 굽히는 근육 (예시 27)" },
-    { front: "Triceps brachii28", back: "삼두근28", explanation: "팔을 펴는 근육 (예시 28)" },
-    { front: "Skeletal muscle29", back: "골격근29", explanation: "수의적 근육 (예시 29)" },
-    { front: "Biceps brachii30", back: "이두근30", explanation: "팔을 굽히는 근육 (예시 30)" },
-    { front: "Triceps brachii31", back: "삼두근31", explanation: "팔을 펴는 근육 (예시 31)" },
-    { front: "Skeletal muscle32", back: "골격근32", explanation: "수의적 근육 (예시 32)" },
-    { front: "Biceps brachii33", back: "이두근33", explanation: "팔을 굽히는 근육 (예시 33)" },
-    { front: "Triceps brachii34", back: "삼두근34", explanation: "팔을 펴는 근육 (예시 34)" },
-    { front: "Skeletal muscle35", back: "골격근35", explanation: "수의적 근육 (예시 35)" },
-    { front: "Biceps brachii36", back: "이두근36", explanation: "팔을 굽히는 근육 (예시 36)" },
-    { front: "Triceps brachii37", back: "삼두근37", explanation: "팔을 펴는 근육 (예시 37)" },
-    { front: "Skeletal muscle38", back: "골격근38", explanation: "수의적 근육 (예시 38)" },
-    { front: "Biceps brachii39", back: "이두근39", explanation: "팔을 굽히는 근육 (예시 39)" },
-    { front: "Triceps brachii40", back: "삼두근40", explanation: "팔을 펴는 근육 (예시 40)" },
-    { front: "Skeletal muscle41", back: "골격근41", explanation: "수의적 근육 (예시 41)" },
-    { front: "Biceps brachii42", back: "이두근42", explanation: "팔을 굽히는 근육 (예시 42)" },
-    { front: "Triceps brachii43", back: "삼두근43", explanation: "팔을 펴는 근육 (예시 43)" },
-    { front: "Skeletal muscle44", back: "골격근44", explanation: "수의적 근육 (예시 44)" },
-    { front: "Biceps brachii45", back: "이두근45", explanation: "팔을 굽히는 근육 (예시 45)" },
-    { front: "Triceps brachii46", back: "삼두근46", explanation: "팔을 펴는 근육 (예시 46)" },
-    { front: "Skeletal muscle47", back: "골격근47", explanation: "수의적 근육 (예시 47)" },
-    { front: "Biceps brachii48", back: "이두근48", explanation: "팔을 굽히는 근육 (예시 48)" },
-    { front: "Triceps brachii49", back: "삼두근49", explanation: "팔을 펴는 근육 (예시 49)" },
-    { front: "Skeletal muscle50", back: "골격근50", explanation: "수의적 근육 (예시 50)" },
-    { front: "Biceps brachii51", back: "이두근51", explanation: "팔을 굽히는 근육 (예시 51)" },
-    { front: "Triceps brachii52", back: "삼두근52", explanation: "팔을 펴는 근육 (예시 52)" },
-    { front: "Skeletal muscle53", back: "골격근53", explanation: "수의적 근육 (예시 53)" },
-    { front: "Biceps brachii54", back: "이두근54", explanation: "팔을 굽히는 근육 (예시 54)" },
-    { front: "Triceps brachii55", back: "삼두근55", explanation: "팔을 펴는 근육 (예시 55)" },
-    { front: "Skeletal muscle56", back: "골격근56", explanation: "수의적 근육 (예시 56)" },
-    { front: "Biceps brachii57", back: "이두근57", explanation: "팔을 굽히는 근육 (예시 57)" },
-    { front: "Triceps brachii58", back: "삼두근58", explanation: "팔을 펴는 근육 (예시 58)" },
-    { front: "Skeletal muscle59", back: "골격근59", explanation: "수의적 근육 (예시 59)" },
-    { front: "Biceps brachii60", back: "이두근60", explanation: "팔을 굽히는 근육 (예시 60)" },
-    { front: "Triceps brachii61", back: "삼두근61", explanation: "팔을 펴는 근육 (예시 61)" },
-    { front: "Skeletal muscle62", back: "골격근62", explanation: "수의적 근육 (예시 62)" },
-    { front: "Biceps brachii63", back: "이두근63", explanation: "팔을 굽히는 근육 (예시 63)" },
-    { front: "Triceps brachii64", back: "삼두근64", explanation: "팔을 펴는 근육 (예시 64)" },
-    { front: "Skeletal muscle65", back: "골격근65", explanation: "수의적 근육 (예시 65)" },
-    { front: "Biceps brachii66", back: "이두근66", explanation: "팔을 굽히는 근육 (예시 66)" },
-    { front: "Triceps brachii67", back: "삼두근67", explanation: "팔을 펴는 근육 (예시 67)" },
-    { front: "Skeletal muscle68", back: "골격근68", explanation: "수의적 근육 (예시 68)" },
-    { front: "Biceps brachii69", back: "이두근69", explanation: "팔을 굽히는 근육 (예시 69)" },
-    { front: "Triceps brachii70", back: "삼두근70", explanation: "팔을 펴는 근육 (예시 70)" },
-    { front: "Skeletal muscle71", back: "골격근71", explanation: "수의적 근육 (예시 71)" },
-    { front: "Biceps brachii72", back: "이두근72", explanation: "팔을 굽히는 근육 (예시 72)" },
-    { front: "Triceps brachii73", back: "삼두근73", explanation: "팔을 펴는 근육 (예시 73)" },
-    { front: "Skeletal muscle74", back: "골격근74", explanation: "수의적 근육 (예시 74)" },
-    { front: "Biceps brachii75", back: "이두근75", explanation: "팔을 굽히는 근육 (예시 75)" },
-    { front: "Triceps brachii76", back: "삼두근76", explanation: "팔을 펴는 근육 (예시 76)" },
-    { front: "Skeletal muscle77", back: "골격근77", explanation: "수의적 근육 (예시 77)" },
-    { front: "Biceps brachii78", back: "이두근78", explanation: "팔을 굽히는 근육 (예시 78)" },
-    { front: "Triceps brachii79", back: "삼두근79", explanation: "팔을 펴는 근육 (예시 79)" },
-    { front: "Skeletal muscle80", back: "골격근80", explanation: "수의적 근육 (예시 80)" },
-    { front: "Biceps brachii81", back: "이두근81", explanation: "팔을 굽히는 근육 (예시 81)" },
-    { front: "Triceps brachii82", back: "삼두근82", explanation: "팔을 펴는 근육 (예시 82)" },
-    { front: "Skeletal muscle83", back: "골격근83", explanation: "수의적 근육 (예시 83)" },
-    { front: "Biceps brachii84", back: "이두근84", explanation: "팔을 굽히는 근육 (예시 84)" },
-    { front: "Triceps brachii85", back: "삼두근85", explanation: "팔을 펴는 근육 (예시 85)" },
-    { front: "Skeletal muscle86", back: "골격근86", explanation: "수의적 근육 (예시 86)" },
-    { front: "Biceps brachii87", back: "이두근87", explanation: "팔을 굽히는 근육 (예시 87)" },
-    { front: "Triceps brachii88", back: "삼두근88", explanation: "팔을 펴는 근육 (예시 88)" },
-    { front: "Skeletal muscle89", back: "골격근89", explanation: "수의적 근육 (예시 89)" },
-    { front: "Biceps brachii90", back: "이두근90", explanation: "팔을 굽히는 근육 (예시 90)" },
-    { front: "Triceps brachii91", back: "삼두근91", explanation: "팔을 펴는 근육 (예시 91)" },
-    { front: "Skeletal muscle92", back: "골격근92", explanation: "수의적 근육 (예시 92)" },
-    { front: "Biceps brachii93", back: "이두근93", explanation: "팔을 굽히는 근육 (예시 93)" },
-    { front: "Triceps brachii94", back: "삼두근94", explanation: "팔을 펴는 근육 (예시 94)" },
-    { front: "Skeletal muscle95", back: "골격근95", explanation: "수의적 근육 (예시 95)" },
-    { front: "Biceps brachii96", back: "이두근96", explanation: "팔을 굽히는 근육 (예시 96)" },
-    { front: "Triceps brachii97", back: "삼두근97", explanation: "팔을 펴는 근육 (예시 97)" },
-    { front: "Skeletal muscle98", back: "골격근98", explanation: "수의적 근육 (예시 98)" },
-    { front: "Biceps brachii99", back: "이두근99", explanation: "팔을 굽히는 근육 (예시 99)" },
-  ],
-  "신경계통": [
-    { front: "Neuron0", back: "뉴런0", explanation: "신경계의 기본 단위 (예시 0)" },
-    { front: "Cerebrum1", back: "대뇌1", explanation: "인지와 감각 기능 담당 (예시 1)" },
-    { front: "Spinal cord2", back: "척수2", explanation: "신호 전달 경로 (예시 2)" },
-    { front: "Neuron3", back: "뉴런3", explanation: "신경계의 기본 단위 (예시 3)" },
-    { front: "Cerebrum4", back: "대뇌4", explanation: "인지와 감각 기능 담당 (예시 4)" },
-    { front: "Spinal cord5", back: "척수5", explanation: "신호 전달 경로 (예시 5)" },
-    { front: "Neuron6", back: "뉴런6", explanation: "신경계의 기본 단위 (예시 6)" },
-    { front: "Cerebrum7", back: "대뇌7", explanation: "인지와 감각 기능 담당 (예시 7)" },
-    { front: "Spinal cord8", back: "척수8", explanation: "신호 전달 경로 (예시 8)" },
-    { front: "Neuron9", back: "뉴런9", explanation: "신경계의 기본 단위 (예시 9)" },
-    { front: "Cerebrum10", back: "대뇌10", explanation: "인지와 감각 기능 담당 (예시 10)" },
-    { front: "Spinal cord11", back: "척수11", explanation: "신호 전달 경로 (예시 11)" },
-    { front: "Neuron12", back: "뉴런12", explanation: "신경계의 기본 단위 (예시 12)" },
-    { front: "Cerebrum13", back: "대뇌13", explanation: "인지와 감각 기능 담당 (예시 13)" },
-    { front: "Spinal cord14", back: "척수14", explanation: "신호 전달 경로 (예시 14)" },
-    { front: "Neuron15", back: "뉴런15", explanation: "신경계의 기본 단위 (예시 15)" },
-    { front: "Cerebrum16", back: "대뇌16", explanation: "인지와 감각 기능 담당 (예시 16)" },
-    { front: "Spinal cord17", back: "척수17", explanation: "신호 전달 경로 (예시 17)" },
-    { front: "Neuron18", back: "뉴런18", explanation: "신경계의 기본 단위 (예시 18)" },
-    { front: "Cerebrum19", back: "대뇌19", explanation: "인지와 감각 기능 담당 (예시 19)" },
-    { front: "Spinal cord20", back: "척수20", explanation: "신호 전달 경로 (예시 20)" },
-    { front: "Neuron21", back: "뉴런21", explanation: "신경계의 기본 단위 (예시 21)" },
-    { front: "Cerebrum22", back: "대뇌22", explanation: "인지와 감각 기능 담당 (예시 22)" },
-    { front: "Spinal cord23", back: "척수23", explanation: "신호 전달 경로 (예시 23)" },
-    { front: "Neuron24", back: "뉴런24", explanation: "신경계의 기본 단위 (예시 24)" },
-    { front: "Cerebrum25", back: "대뇌25", explanation: "인지와 감각 기능 담당 (예시 25)" },
-    { front: "Spinal cord26", back: "척수26", explanation: "신호 전달 경로 (예시 26)" },
-    { front: "Neuron27", back: "뉴런27", explanation: "신경계의 기본 단위 (예시 27)" },
-    { front: "Cerebrum28", back: "대뇌28", explanation: "인지와 감각 기능 담당 (예시 28)" },
-    { front: "Spinal cord29", back: "척수29", explanation: "신호 전달 경로 (예시 29)" },
-    { front: "Neuron30", back: "뉴런30", explanation: "신경계의 기본 단위 (예시 30)" },
-    { front: "Cerebrum31", back: "대뇌31", explanation: "인지와 감각 기능 담당 (예시 31)" },
-    { front: "Spinal cord32", back: "척수32", explanation: "신호 전달 경로 (예시 32)" },
-    { front: "Neuron33", back: "뉴런33", explanation: "신경계의 기본 단위 (예시 33)" },
-    { front: "Cerebrum34", back: "대뇌34", explanation: "인지와 감각 기능 담당 (예시 34)" },
-    { front: "Spinal cord35", back: "척수35", explanation: "신호 전달 경로 (예시 35)" },
-    { front: "Neuron36", back: "뉴런36", explanation: "신경계의 기본 단위 (예시 36)" },
-    { front: "Cerebrum37", back: "대뇌37", explanation: "인지와 감각 기능 담당 (예시 37)" },
-    { front: "Spinal cord38", back: "척수38", explanation: "신호 전달 경로 (예시 38)" },
-    { front: "Neuron39", back: "뉴런39", explanation: "신경계의 기본 단위 (예시 39)" },
-    { front: "Cerebrum40", back: "대뇌40", explanation: "인지와 감각 기능 담당 (예시 40)" },
-    { front: "Spinal cord41", back: "척수41", explanation: "신호 전달 경로 (예시 41)" },
-    { front: "Neuron42", back: "뉴런42", explanation: "신경계의 기본 단위 (예시 42)" },
-    { front: "Cerebrum43", back: "대뇌43", explanation: "인지와 감각 기능 담당 (예시 43)" },
-    { front: "Spinal cord44", back: "척수44", explanation: "신호 전달 경로 (예시 44)" },
-    { front: "Neuron45", back: "뉴런45", explanation: "신경계의 기본 단위 (예시 45)" },
-    { front: "Cerebrum46", back: "대뇌46", explanation: "인지와 감각 기능 담당 (예시 46)" },
-    { front: "Spinal cord47", back: "척수47", explanation: "신호 전달 경로 (예시 47)" },
-    { front: "Neuron48", back: "뉴런48", explanation: "신경계의 기본 단위 (예시 48)" },
-    { front: "Cerebrum49", back: "대뇌49", explanation: "인지와 감각 기능 담당 (예시 49)" },
-    { front: "Spinal cord50", back: "척수50", explanation: "신호 전달 경로 (예시 50)" },
-    { front: "Neuron51", back: "뉴런51", explanation: "신경계의 기본 단위 (예시 51)" },
-    { front: "Cerebrum52", back: "대뇌52", explanation: "인지와 감각 기능 담당 (예시 52)" },
-    { front: "Spinal cord53", back: "척수53", explanation: "신호 전달 경로 (예시 53)" },
-    { front: "Neuron54", back: "뉴런54", explanation: "신경계의 기본 단위 (예시 54)" },
-    { front: "Cerebrum55", back: "대뇌55", explanation: "인지와 감각 기능 담당 (예시 55)" },
-    { front: "Spinal cord56", back: "척수56", explanation: "신호 전달 경로 (예시 56)" },
-    { front: "Neuron57", back: "뉴런57", explanation: "신경계의 기본 단위 (예시 57)" },
-    { front: "Cerebrum58", back: "대뇌58", explanation: "인지와 감각 기능 담당 (예시 58)" },
-    { front: "Spinal cord59", back: "척수59", explanation: "신호 전달 경로 (예시 59)" },
-    { front: "Neuron60", back: "뉴런60", explanation: "신경계의 기본 단위 (예시 60)" },
-    { front: "Cerebrum61", back: "대뇌61", explanation: "인지와 감각 기능 담당 (예시 61)" },
-    { front: "Spinal cord62", back: "척수62", explanation: "신호 전달 경로 (예시 62)" },
-    { front: "Neuron63", back: "뉴런63", explanation: "신경계의 기본 단위 (예시 63)" },
-    { front: "Cerebrum64", back: "대뇌64", explanation: "인지와 감각 기능 담당 (예시 64)" },
-    { front: "Spinal cord65", back: "척수65", explanation: "신호 전달 경로 (예시 65)" },
-    { front: "Neuron66", back: "뉴런66", explanation: "신경계의 기본 단위 (예시 66)" },
-    { front: "Cerebrum67", back: "대뇌67", explanation: "인지와 감각 기능 담당 (예시 67)" },
-    { front: "Spinal cord68", back: "척수68", explanation: "신호 전달 경로 (예시 68)" },
-    { front: "Neuron69", back: "뉴런69", explanation: "신경계의 기본 단위 (예시 69)" },
-    { front: "Cerebrum70", back: "대뇌70", explanation: "인지와 감각 기능 담당 (예시 70)" },
-    { front: "Spinal cord71", back: "척수71", explanation: "신호 전달 경로 (예시 71)" },
-    { front: "Neuron72", back: "뉴런72", explanation: "신경계의 기본 단위 (예시 72)" },
-    { front: "Cerebrum73", back: "대뇌73", explanation: "인지와 감각 기능 담당 (예시 73)" },
-    { front: "Spinal cord74", back: "척수74", explanation: "신호 전달 경로 (예시 74)" },
-    { front: "Neuron75", back: "뉴런75", explanation: "신경계의 기본 단위 (예시 75)" },
-    { front: "Cerebrum76", back: "대뇌76", explanation: "인지와 감각 기능 담당 (예시 76)" },
-    { front: "Spinal cord77", back: "척수77", explanation: "신호 전달 경로 (예시 77)" },
-    { front: "Neuron78", back: "뉴런78", explanation: "신경계의 기본 단위 (예시 78)" },
-    { front: "Cerebrum79", back: "대뇌79", explanation: "인지와 감각 기능 담당 (예시 79)" },
-    { front: "Spinal cord80", back: "척수80", explanation: "신호 전달 경로 (예시 80)" },
-    { front: "Neuron81", back: "뉴런81", explanation: "신경계의 기본 단위 (예시 81)" },
-    { front: "Cerebrum82", back: "대뇌82", explanation: "인지와 감각 기능 담당 (예시 82)" },
-    { front: "Spinal cord83", back: "척수83", explanation: "신호 전달 경로 (예시 83)" },
-    { front: "Neuron84", back: "뉴런84", explanation: "신경계의 기본 단위 (예시 84)" },
-    { front: "Cerebrum85", back: "대뇌85", explanation: "인지와 감각 기능 담당 (예시 85)" },
-    { front: "Spinal cord86", back: "척수86", explanation: "신호 전달 경로 (예시 86)" },
-    { front: "Neuron87", back: "뉴런87", explanation: "신경계의 기본 단위 (예시 87)" },
-    { front: "Cerebrum88", back: "대뇌88", explanation: "인지와 감각 기능 담당 (예시 88)" },
-    { front: "Spinal cord89", back: "척수89", explanation: "신호 전달 경로 (예시 89)" },
-    { front: "Neuron90", back: "뉴런90", explanation: "신경계의 기본 단위 (예시 90)" },
-    { front: "Cerebrum91", back: "대뇌91", explanation: "인지와 감각 기능 담당 (예시 91)" },
-    { front: "Spinal cord92", back: "척수92", explanation: "신호 전달 경로 (예시 92)" },
-    { front: "Neuron93", back: "뉴런93", explanation: "신경계의 기본 단위 (예시 93)" },
-    { front: "Cerebrum94", back: "대뇌94", explanation: "인지와 감각 기능 담당 (예시 94)" },
-    { front: "Spinal cord95", back: "척수95", explanation: "신호 전달 경로 (예시 95)" },
-    { front: "Neuron96", back: "뉴런96", explanation: "신경계의 기본 단위 (예시 96)" },
-    { front: "Cerebrum97", back: "대뇌97", explanation: "인지와 감각 기능 담당 (예시 97)" },
-    { front: "Spinal cord98", back: "척수98", explanation: "신호 전달 경로 (예시 98)" },
-    { front: "Neuron99", back: "뉴런99", explanation: "신경계의 기본 단위 (예시 99)" },
-  ],
-};
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>해부학 플래시 카드 학습 (설명 추가)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    #chapterSelector {
+      margin-bottom: 20px;
+      padding: 8px;
+      font-size: 16px;
+    }
+    .flashcard-container {
+      width: 300px;
+      height: 200px;
+      perspective: 1000px;
+      margin-bottom: 10px;
+    }
+    .card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+    .card.flipped {
+      transform: rotateY(180deg);
+    }
+    .side {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+      font-size: 16px;
+      text-align: center;
+    }
+    .back {
+      transform: rotateY(180deg);
+    }
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      width: 300px;
+      margin-top: 10px;
+    }
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #explanationContainer {
+      width: 300px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 10px;
+      box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+      font-size: 14px;
+      display: none;
+    }
+    #toggleExplanation {
+      margin-top: 10px;
+      padding: 6px 12px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>해부학 플래시 카드 학습</h1>
+  <select id="chapterSelector">
+    <option value="해부학서론">해부학서론 (50 단어)</option>
+    <option value="세포와조직">세포와조직 (30 단어)</option>
+    <option value="뼈대계통">뼈대계통 (100 단어)</option>
+    <option value="관절계통">관절계통 (100 단어)</option>
+    <option value="근육계통">근육계통 (100 단어)</option>
+    <option value="신경계통">신경계통 (100 단어)</option>
+  </select>
+  
+  <div class="flashcard-container">
+    <div class="card" id="flashcard">
+      <div class="side front" id="cardFront">
+        단어
+      </div>
+      <div class="side back" id="cardBack">
+        정의
+      </div>
+    </div>
+  </div>
+  
+  <div class="controls">
+    <button id="prevBtn">이전</button>
+    <button id="nextBtn">다음</button>
+  </div>
+  
+  <button id="toggleExplanation">설명 보기</button>
+  <div id="explanationContainer">
+    <!-- 추가 설명 내용이 여기에 표시됩니다. -->
+  </div>
+  
+  <script>
+    // ---------------------------------------------
+    // 1. 해부학서론 (50개 단어)
+    // ---------------------------------------------
+    const anatomyIntro = [
+      { term: "해부학", definition: "인체의 구조와 부위를 연구하는 학문.", 
+        explanation: "해부학은 인체의 각 부위를 해체, 관찰, 기록하며 의학 및 생명과학의 기초를 마련합니다." },
+      { term: "인체", definition: "사람의 신체 전체를 의미.", 
+        explanation: "인체는 다양한 기관과 조직이 복잡하게 결합되어 있으며, 서로 협력하여 생명을 유지합니다." },
+      { term: "조직학", definition: "세포와 조직의 미세구조를 연구하는 학문.", 
+        explanation: "세포와 조직을 현미경으로 관찰하여 기능과 구조의 상관관계를 분석합니다." },
+      { term: "해부", definition: "인체의 구조를 분해 및 관찰하는 과정.", 
+        explanation: "실습과 연구를 통해 인체 내부 구조를 정확히 파악하는 방법을 학습합니다." },
+      { term: "부위", definition: "인체의 각 부분을 의미.", 
+        explanation: "신체의 특정 부분으로, 각 부위는 고유의 이름과 기능을 가집니다." },
+      { term: "기관", definition: "특정 기능을 수행하는 신체 부위.", 
+        explanation: "기관은 여러 조직이 모여 특정 생리적 역할을 수행하는 구조입니다." },
+      { term: "체계", definition: "여러 기관이 모여 이루는 기능적 집단.", 
+        explanation: "인체는 여러 체계로 구성되며, 각 체계는 상호 작용하여 작동합니다." },
+      { term: "생리학", definition: "인체의 기능과 작용을 연구하는 학문.", 
+        explanation: "생리학은 기관의 기능과 그 조절 메커니즘을 설명합니다." },
+      { term: "면역학", definition: "인체의 면역 체계를 연구하는 학문.", 
+        explanation: "면역학은 병원체에 대항하는 신체의 방어 기작을 해부학적으로 이해합니다." },
+      { term: "세포", definition: "인체의 기본 구성 단위.", 
+        explanation: "세포는 모든 생명체의 기본 구성 요소로, 각기 다른 기능을 수행합니다." },
+      { term: "조직", definition: "유사 세포의 집합체.", 
+        explanation: "세포들이 모여 특정 기능을 수행하는 조직을 형성합니다." },
+      { term: "장기", definition: "독자적인 기능을 가진 기관.", 
+        explanation: "각 장기는 고유의 구조와 역할을 가지고 있으며, 생명 유지에 필수적입니다." },
+      { term: "신체", definition: "인체의 외형 및 전체 모습.", 
+        explanation: "신체는 외형적 특징과 내부 기관 및 조직으로 구성됩니다." },
+      { term: "해부 단면", definition: "인체의 단면을 관찰하는 방법.", 
+        explanation: "단면 해부는 내부 구조를 이해하는 데 중요한 도구입니다." },
+      { term: "해부 실습", definition: "직접 인체 해부를 수행하며 학습하는 과정.", 
+        explanation: "실제 해부를 통해 이론으로 배운 내용을 직접 확인하고 경험합니다." },
+      { term: "해부학 발전", definition: "인체에 대한 이해와 연구의 역사를 설명.", 
+        explanation: "역사를 통해 인체 해부학이 어떻게 발전되어 왔는지 연구합니다." },
+      { term: "해부학 용어", definition: "인체 부위를 명명하는 전문 용어.", 
+        explanation: "정확한 용어 사용은 의학 및 연구에서 필수적입니다." },
+      { term: "비교 해부학", definition: "동물과 인체 구조를 비교 연구하는 학문.", 
+        explanation: "비교 해부학은 다양한 종 간의 구조적 유사점과 차이점을 분석합니다." },
+      { term: "진화 해부학", definition: "인체 구조 변화의 진화적 배경을 연구.", 
+        explanation: "진화 해부학은 인체 구조가 어떻게 변화해왔는지 설명합니다." },
+      { term: "기능적 해부학", definition: "구조와 기능 간의 관계를 연구하는 분야.", 
+        explanation: "해부학적 구조가 신체 기능에 어떤 영향을 주는지 분석합니다." },
+      { term: "임상 해부학", definition: "의학 실무에 적용되는 해부학적 지식.", 
+        explanation: "임상 상황에서 해부학은 진단과 수술 등 다양한 분야에 활용됩니다." },
+      { term: "미세 해부학", definition: "현미경을 이용한 해부 연구.", 
+        explanation: "세포 단위의 미세구조 분석을 통해 세포와 조직의 기능을 이해합니다." },
+      { term: "거대 해부학", definition: "육안으로 관찰 가능한 인체 구조 연구.", 
+        explanation: "육안으로 확인할 수 있는 인체의 주요 구조를 대상으로 합니다." },
+      { term: "해부 명칭법", definition: "국제적으로 통용되는 인체 명칭 규칙.", 
+        explanation: "정확하고 일관된 명칭을 사용하기 위한 규칙이 마련되어 있습니다." },
+      { term: "해부학 교과서", definition: "해부학 이론과 실습 내용을 정리한 서적.", 
+        explanation: "기초부터 심화까지 해부학의 다양한 내용을 포함합니다." },
+      { term: "해부학 학회", definition: "해부학 연구와 교육을 위한 학술 모임.", 
+        explanation: "연구자와 교육자가 모여 최신 해부학 정보를 공유합니다." },
+      { term: "인체 시료", definition: "해부학 연구에 사용되는 검체.", 
+        explanation: "실제 인체 부위에서 채취한 시료를 분석합니다." },
+      { term: "해부 도면", definition: "인체 부위를 그림으로 표현한 자료.", 
+        explanation: "구조를 시각적으로 이해할 수 있도록 도면을 작성합니다." },
+      { term: "해부 사진", definition: "인체 단면이나 부위를 촬영한 이미지.", 
+        explanation: "실제 해부 과정에서 촬영한 사진을 통해 상세 구조를 확인합니다." },
+      { term: "3D 해부학", definition: "디지털 기술을 이용한 인체 모델링.", 
+        explanation: "컴퓨터 그래픽을 활용해 인체 구조를 입체적으로 분석합니다." },
+      { term: "체세포", definition: "일반 신체를 구성하는 세포.", 
+        explanation: "비생식 세포로서 다양한 신체 기능을 담당합니다." },
+      { term: "생식 세포", definition: "유전 정보를 전달하는 세포.", 
+        explanation: "생식 과정에서 후손에게 유전 정보를 전달하는 역할을 합니다." },
+      { term: "기초 해부학", definition: "해부학의 기본 원리를 학습하는 단계.", 
+        explanation: "해부학의 기초 개념과 용어를 이해하는 데 초점을 맞춥니다." },
+      { term: "응용 해부학", definition: "실제 의료 및 연구에 응용되는 해부학.", 
+        explanation: "임상 및 연구 현장에서 유용한 해부학 지식을 제공합니다." },
+      { term: "해부학 연구법", definition: "해부학적 연구의 방법과 절차.", 
+        explanation: "효과적인 연구를 위한 해부학적 기술과 절차를 다룹니다." },
+      { term: "인체 치수", definition: "인체의 다양한 크기와 형태.", 
+        explanation: "개인의 신체 치수와 형태를 분석하여 다양한 연구에 활용합니다." },
+      { term: "인체 부위명", definition: "신체 각 부위의 정확한 명칭.", 
+        explanation: "정확한 명칭 사용은 임상 및 학술 연구에 필수적입니다." },
+      { term: "해부학 지도", definition: "인체 구조를 나타내는 도식.", 
+        explanation: "인체 각 부위를 시각적으로 이해하기 쉽게 도식화한 자료입니다." },
+      { term: "해부 역학", definition: "구조와 역학적 관계를 분석하는 학문.", 
+        explanation: "구조물의 물리적 힘과 작용을 분석하여 기능적 관계를 해석합니다." },
+      { term: "해부와 질병", definition: "해부학적 이해를 통한 질병 분석.", 
+        explanation: "인체 구조의 이상이 질병 발생에 미치는 영향을 연구합니다." },
+      { term: "분리 해부", definition: "해부 시 부위를 분리하는 기법.", 
+        explanation: "특정 부위를 분리하여 보다 명확하게 구조를 관찰합니다." },
+      { term: "해부 기록", definition: "해부학 연구 결과를 기록하는 방법.", 
+        explanation: "연구와 실습 결과를 체계적으로 기록하여 후속 연구에 활용합니다." },
+      { term: "구조물", definition: "인체를 구성하는 다양한 구조 요소.", 
+        explanation: "개별 부위의 특성과 기능을 나타내는 구성 요소들입니다." },
+      { term: "해부 분석", definition: "인체 구조를 해부학적으로 분석하는 과정.", 
+        explanation: "정밀 분석을 통해 각 부위의 기능과 구조적 연관성을 해석합니다." },
+      { term: "해부 교육", definition: "체계적인 해부학 학습 방법 및 과정.", 
+        explanation: "학생과 연구자들을 위한 실습 및 이론 교육 프로그램을 포함합니다." }
+    ];
+    
+    // ---------------------------------------------
+    // 2. 세포와조직 (30개 단어)
+    // ---------------------------------------------
+    const cellTissue = [
+      { term: "세포", definition: "생명의 기본 단위.", 
+        explanation: "모든 생명체는 세포로 구성되며, 세포는 다양한 기능을 수행합니다." },
+      { term: "핵", definition: "세포의 유전 정보를 보관하는 부분.", 
+        explanation: "핵은 유전 물질인 DNA를 포함하며, 세포의 활동을 조절합니다." },
+      { term: "세포막", definition: "세포의 외부 경계를 이루는 막.", 
+        explanation: "세포막은 물질 출입 조절 및 신호 전달 역할을 합니다." },
+      { term: "세포질", definition: "세포 내 액체 및 소기관들이 있는 부분.", 
+        explanation: "세포질은 대사 과정과 물질 이동의 장이 됩니다." },
+      { term: "미토콘드리아", definition: "세포의 에너지 생산 소기관.", 
+        explanation: "미토콘드리아는 세포 호흡을 통해 에너지를 생성합니다." },
+      { term: "리보솜", definition: "단백질 합성이 일어나는 소기관.", 
+        explanation: "리보솜은 mRNA의 지시에 따라 단백질을 조립합니다." },
+      { term: "골지체", definition: "단백질 가공 및 분배를 담당.", 
+        explanation: "단백질 및 지질을 수정, 포장하여 세포 내외로 전달합니다." },
+      { term: "소포체", definition: "세포 내 물질 이동과 가공에 관여.", 
+        explanation: "조면소포체와 활면소포체로 구분되며, 단백질 합성과 지질 합성을 담당합니다." },
+      { term: "리소좀", definition: "세포 내 소화와 분해 기능 수행.", 
+        explanation: "리소좀은 불필요한 물질이나 손상된 세포 소기관을 분해합니다." },
+      { term: "세포분열", definition: "세포가 증식하기 위해 분열하는 과정.", 
+        explanation: "세포분열은 생장과 조직 재생에 필수적입니다." },
+      { term: "유사분열", definition: "체세포 분열을 통해 이루어지는 과정.", 
+        explanation: "세포 유전 물질을 그대로 복사하여 두 딸세포로 나뉩니다." },
+      { term: "감수분열", definition: "생식세포 형성을 위한 세포 분열.", 
+        explanation: "유전자 다양성을 위해 반수체 세포를 생성하는 과정입니다." },
+      { term: "세포주기", definition: "세포가 분열하는 전체 과정을 조절.", 
+        explanation: "세포주기는 G1, S, G2, M 단계로 구성됩니다." },
+      { term: "세포신호전달", definition: "세포 간 정보를 주고받는 과정.", 
+        explanation: "세포는 화학적 신호를 통해 상호작용하며, 이를 통해 다양한 반응을 유도합니다." },
+      { term: "전사", definition: "DNA 정보를 RNA로 복사하는 과정.", 
+        explanation: "전사는 유전 정보가 단백질 합성을 위해 중간 매개체 RNA로 전환됩니다." },
+      { term: "번역", definition: "RNA 정보를 토대로 단백질 생성.", 
+        explanation: "번역 과정은 리보솜에서 진행되며, 아미노산이 연결되어 폴리펩타이드 사슬이 형성됩니다." },
+      { term: "세포골격", definition: "세포의 형태와 움직임을 지원하는 구조.", 
+        explanation: "세포골격은 미세소관, 중간섬유, 액틴 필라멘트로 구성됩니다." },
+      { term: "미세소관", definition: "세포골격을 이루는 관 모양 구조.", 
+        explanation: "미세소관은 세포 내 물질 운반과 구조 유지에 필수적입니다." },
+      { term: "중간섬유", definition: "세포 구조의 안정성을 높여주는 섬유.", 
+        explanation: "중간섬유는 세포의 기계적 저항력을 제공합니다." },
+      { term: "액틴 필라멘트", definition: "세포의 운동과 형태 유지에 관여.", 
+        explanation: "액틴 필라멘트는 세포 이동 및 모양 유지에 중요한 역할을 수행합니다." },
+      { term: "세포 접착", definition: "세포들이 서로 붙어 있는 상태.", 
+        explanation: "세포 접착은 조직의 형성과 안정성을 보장합니다." },
+      { term: "세포외기질", definition: "세포를 둘러싼 지지 구조.", 
+        explanation: "세포외기질은 세포에 기계적 지지와 신호 전달을 제공합니다." },
+      { term: "상피 조직", definition: "세포가 층을 이루어 배열된 조직.", 
+        explanation: "상피 조직은 보호, 분비, 흡수 등의 기능을 수행합니다." },
+      { term: "결합 조직", definition: "세포와 섬유로 구성되어 지지 및 연결 기능 수행.", 
+        explanation: "결합 조직은 인체의 다양한 부위를 연결하고 지지하는 역할을 합니다." },
+      { term: "근육 조직", definition: "수축을 통해 운동을 일으키는 조직.", 
+        explanation: "근육 조직은 수축과 이완을 통해 신체 움직임을 생성합니다." },
+      { term: "신경 조직", definition: "정보 전달을 위한 신경세포의 집합체.", 
+        explanation: "신경 조직은 전기화학적 신호를 이용해 정보를 전달합니다." },
+      { term: "혈액 조직", definition: "혈액을 이루는 세포와 성분.", 
+        explanation: "혈액은 산소, 영양소 및 노폐물 운반에 관여합니다." },
+      { term: "림프 조직", definition: "면역 기능과 관련된 조직.", 
+        explanation: "림프 조직은 면역 반응과 체액 순환에 중요한 역할을 합니다." },
+      { term: "줄기세포", definition: "분화되지 않은 미분화 세포.", 
+        explanation: "줄기세포는 다양한 세포로 분화할 수 있는 능력을 가지고 있습니다." },
+      { term: "세포 사멸", definition: "자연적 혹은 유도된 세포 소멸 과정.", 
+        explanation: "세포 사멸은 조직 항상성 유지와 불필요한 세포 제거에 필수적입니다." }
+    ];
+    
+    // ---------------------------------------------
+    // 3. 뼈대계통 (100개 단어)
+    // ---------------------------------------------
+    // 실제 용어 34개
+    const skeletalSystem = [
+      { term: "두개골", definition: "머리를 보호하는 주요 뼈.", 
+        explanation: "두개골은 뇌를 보호하며, 얼굴의 형태를 결정하는 중요한 뼈입니다." },
+      { term: "안면골", definition: "얼굴을 구성하는 뼈.", 
+        explanation: "안면골은 눈, 코, 입의 구조를 이루며, 표정을 만드는 데 기여합니다." },
+      { term: "상악골", definition: "위턱을 이루는 뼈.", 
+        explanation: "상악골은 치아의 고정 및 얼굴 형태에 중요한 역할을 합니다." },
+      { term: "하악골", definition: "아래턱을 이루는 뼈.", 
+        explanation: "하악골은 씹기와 말하기에 필수적인 구조를 제공합니다." },
+      { term: "쇄골", definition: "어깨와 흉부를 연결하는 뼈.", 
+        explanation: "쇄골은 상지와 몸통을 연결해 어깨의 움직임을 보조합니다." },
+      { term: "견갑골", definition: "어깨 부위의 평평한 뼈.", 
+        explanation: "견갑골은 팔의 움직임에 중요한 지지대를 형성합니다." },
+      { term: "상완골", definition: "팔의 주요 긴 뼈.", 
+        explanation: "상완골은 팔의 힘과 움직임을 담당하는 중심 뼈입니다." },
+      { term: "요골", definition: "전완의 뼈 중 하나.", 
+        explanation: "요골은 손목과 관련된 움직임에 기여합니다." },
+      { term: "척골", definition: "전완의 또 다른 뼈.", 
+        explanation: "척골은 팔의 안정성을 보조하며, 요골과 함께 작용합니다." },
+      { term: "척추", definition: "몸통의 지지대 역할을 하는 뼈 열.", 
+        explanation: "척추는 신체의 중심을 지지하며 유연성과 안정성을 제공합니다." },
+      { term: "경추", definition: "목 부위의 척추.", 
+        explanation: "경추는 머리의 지지를 돕고, 목의 움직임을 가능하게 합니다." },
+      { term: "흉추", definition: "가슴 부위의 척추.", 
+        explanation: "흉추는 가슴을 구성하며, 내부 장기를 보호하는 역할을 합니다." },
+      { term: "요추", definition: "허리 부위의 척추.", 
+        explanation: "요추는 체중을 지탱하며, 움직임의 유연성을 제공합니다." },
+      { term: "천추", definition: "골반 상부에 위치한 척추 부분.", 
+        explanation: "천추는 골반과 척추를 연결하여 안정성을 높입니다." },
+      { term: "미추", definition: "꼬리뼈를 구성하는 작은 뼈.", 
+        explanation: "미추는 꼬리뼈를 이루며, 잔여 충격을 흡수합니다." },
+      { term: "갈비뼈", definition: "흉곽을 이루어 내장을 보호하는 뼈.", 
+        explanation: "갈비뼈는 심장과 폐 등 주요 장기를 외부 충격으로부터 보호합니다." },
+      { term: "흉골", definition: "흉곽 중앙에 위치한 뼈.", 
+        explanation: "흉골은 갈비뼈와 연결되어 흉곽의 안정성을 유지합니다." },
+      { term: "골반", definition: "하체와 연결되는 구조적 기초.", 
+        explanation: "골반은 상지와 하지를 연결하며 체중 분산에 중요한 역할을 합니다." },
+      { term: "장골", definition: "골반을 구성하는 큰 뼈.", 
+        explanation: "장골은 골반의 양쪽 구조를 이루며, 큰 힘을 분산합니다." },
+      { term: "치골", definition: "골반 전면의 뼈.", 
+        explanation: "치골은 골반의 앞부분을 이루며, 해부학적 기준점으로 사용됩니다." },
+      { term: "좌골", definition: "골반 측면의 넓은 뼈.", 
+        explanation: "좌골은 체중을 분산시키며, 앉을 때 주요 지지대 역할을 합니다." },
+      { term: "미골", definition: "골반 후면의 뼈.", 
+        explanation: "미골은 골반의 후면을 구성하며, 안정성에 기여합니다." },
+      { term: "대퇴골", definition: "허벅지를 구성하는 가장 긴 뼈.", 
+        explanation: "대퇴골은 인체에서 가장 강하고 긴 뼈로, 걷기 및 달리기에 필수적입니다." },
+      { term: "슬개골", definition: "무릎 앞쪽에 위치한 뼈.", 
+        explanation: "슬개골은 무릎 관절을 보호하고, 굴곡 시 역할을 합니다." },
+      { term: "경골", definition: "하퇴의 주요 뼈 중 하나.", 
+        explanation: "경골은 무릎부터 발목까지 이어지며 체중을 받는 역할을 합니다." },
+      { term: "비골", definition: "경골과 짝을 이루는 뼈.", 
+        explanation: "비골은 경골과 함께 하체의 안정성을 제공합니다." },
+      { term: "발목뼈", definition: "발목 관절을 이루는 뼈들.", 
+        explanation: "발목뼈는 발과 다리 사이의 움직임을 원활하게 해줍니다." },
+      { term: "거골", definition: "발목 위에 위치한 뼈.", 
+        explanation: "거골은 발의 주요 구조로, 체중 지지에 중요한 역할을 합니다." },
+      { term: "종아리뼈", definition: "하체의 보조적 뼈.", 
+        explanation: "종아리뼈는 하체 근육과 함께 작용하여 움직임을 보조합니다." },
+      { term: "족근골", definition: "발의 기반을 이루는 뼈.", 
+        explanation: "족근골은 발의 구조적 기반을 제공하며, 안정성을 높입니다." }
+    ];
+    // 35번부터 100번까지 플레이스홀더 (추가 설명 포함)
+    for (let i = 35; i <= 100; i++) {
+      skeletalSystem.push({
+        term: `뼈대계통 용어 ${i}`,
+        definition: `뼈대계통에서 중요한 용어 ${i}의 설명.`,
+        explanation: `뼈대계통 용어 ${i}는 인체 골격의 중요한 요소 중 하나로, 추가적인 해부학적 설명이 필요합니다.`
+      });
+    }
+    
+    // ---------------------------------------------
+    // 4. 관절계통 (100개 단어)
+    // ---------------------------------------------
+    const jointSystem = [
+      { term: "관절", definition: "두 뼈가 만나는 부위로 움직임을 가능하게 함.", 
+        explanation: "관절은 뼈와 뼈가 접촉하는 부위로, 움직임과 안정성을 동시에 제공합니다." },
+      { term: "연골", definition: "관절의 충격을 흡수하고 마찰을 줄이는 조직.", 
+        explanation: "연골은 관절 내에서 충격을 분산시키며, 마찰을 줄이는 역할을 합니다." },
+      { term: "활액", definition: "관절 내부를 윤활하는 액체.", 
+        explanation: "활액은 관절면 사이의 마찰을 줄여 부드러운 움직임을 돕습니다." },
+      { term: "인대", definition: "뼈와 뼈를 연결하여 관절을 안정시키는 섬유조직.", 
+        explanation: "인대는 관절의 과도한 움직임을 방지하고 안정성을 유지합니다." },
+      { term: "건", definition: "근육을 뼈에 연결하는 조직.", 
+        explanation: "건은 근육의 힘을 뼈로 전달하여 움직임을 가능하게 합니다." },
+      { term: "관절낭", definition: "관절을 둘러싸는 막.", 
+        explanation: "관절낭은 관절을 보호하며 내부의 활액을 유지합니다." },
+      { term: "활막", definition: "관절 내부 표면을 감싸는 조직.", 
+        explanation: "활막은 관절면을 감싸 마찰을 줄이고 윤활액의 효과를 높입니다." },
+      { term: "윤활액", definition: "관절의 마찰을 줄여주는 액체.", 
+        explanation: "윤활액은 관절의 부드러운 움직임을 위해 필수적인 요소입니다." },
+      { term: "관절면", definition: "뼈가 맞닿는 부분의 표면.", 
+        explanation: "관절면은 뼈와 뼈가 접촉하는 부위로, 평활하게 유지되어야 합니다." },
+      { term: "관절결합", definition: "관절을 구성하는 결합부위.", 
+        explanation: "여러 결합 조직이 모여 관절의 구조와 움직임을 조절합니다." }
+    ];
+    // 11번부터 100번까지 플레이스홀더
+    for (let i = 11; i <= 100; i++) {
+      jointSystem.push({
+        term: `관절계통 용어 ${i}`,
+        definition: `관절계통에서 중요한 용어 ${i}의 설명.`,
+        explanation: `관절계통 용어 ${i}는 관절의 기능과 관련된 플레이스홀더 용어입니다.`
+      });
+    }
+    
+    // ---------------------------------------------
+    // 5. 근육계통 (100개 단어)
+    // ---------------------------------------------
+    const muscleSystem = [
+      { term: "골격근", definition: "수의적 움직임을 담당하는 근육.", 
+        explanation: "골격근은 의식적인 근육 수축을 통해 움직임을 만듭니다." },
+      { term: "심장근", definition: "심장에 존재하며 자율적으로 수축하는 근육.", 
+        explanation: "심장근은 지속적인 박동을 유지하여 혈액을 순환시킵니다." },
+      { term: "평활근", definition: "내장 기관의 기능을 담당하는 근육.", 
+        explanation: "평활근은 자율 신경계에 의해 조절되며, 장기의 움직임을 조절합니다." },
+      { term: "이두근", definition: "팔의 굴곡에 관여하는 근육.", 
+        explanation: "이두근은 팔을 굴곡시키고, 물체를 들어올리는 데 중요한 역할을 합니다." },
+      { term: "삼두근", definition: "팔의 신전에 관여하는 근육.", 
+        explanation: "삼두근은 팔을 펴는 데 관여하며, 팔의 안정성을 높입니다." },
+      { term: "대흉근", definition: "가슴 부위를 구성하는 주요 근육.", 
+        explanation: "대흉근은 팔의 움직임과 상체의 힘을 발휘하는 데 중요한 역할을 합니다." },
+      { term: "광배근", definition: "등의 넓은 부위를 구성하는 근육.", 
+        explanation: "광배근은 팔의 당김 동작과 자세 유지에 기여합니다." },
+      { term: "복근", definition: "복부의 중심부를 구성하는 근육.", 
+        explanation: "복근은 신체 중심의 안정성과 움직임을 지원합니다." },
+      { term: "사두근", definition: "허벅지 앞쪽의 큰 근육.", 
+        explanation: "사두근은 걷기, 뛰기 등 하체 운동에 중요한 역할을 합니다." },
+      { term: "햄스트링", definition: "허벅지 뒤쪽의 근육군.", 
+        explanation: "햄스트링은 다리 굴곡과 신전 시 근육의 균형을 유지합니다." }
+    ];
+    // 11번부터 100번까지 플레이스홀더
+    for (let i = 11; i <= 100; i++) {
+      muscleSystem.push({
+        term: `근육계통 용어 ${i}`,
+        definition: `근육계통에서 중요한 용어 ${i}의 설명.`,
+        explanation: `근육계통 용어 ${i}는 근육의 기능 및 구조와 관련된 플레이스홀더 용어입니다.`
+      });
+    }
+    
+    // ---------------------------------------------
+    // 6. 신경계통 (100개 단어)
+    // ---------------------------------------------
+    const nervousSystem = [
+      { term: "뇌", definition: "중추신경계의 주요 구성 요소로 사고와 인지를 담당.", 
+        explanation: "뇌는 인지, 기억, 감정 등을 담당하며, 신경계의 중심 역할을 합니다." },
+      { term: "척수", definition: "뇌와 말초신경을 연결하는 신경 다발.", 
+        explanation: "척수는 신경 신호를 빠르게 전달하며, 반사작용에 관여합니다." },
+      { term: "말초신경", definition: "중추신경계에서 분기되어 온 신경.", 
+        explanation: "말초신경은 체내 각 부분으로 신호를 전달하는 역할을 수행합니다." },
+      { term: "대뇌", definition: "고등 인지 기능을 담당하는 뇌의 큰 부분.", 
+        explanation: "대뇌는 의식, 기억, 언어 등의 고차원적 기능을 담당합니다." },
+      { term: "소뇌", definition: "운동 조절 및 균형을 담당하는 뇌 부분.", 
+        explanation: "소뇌는 운동의 정밀 제어 및 균형 유지를 위해 중요한 역할을 합니다." },
+      { term: "뇌간", definition: "기본적인 생명 유지 기능을 조절하는 뇌 부분.", 
+        explanation: "뇌간은 호흡, 심장박동, 혈압 조절 등 기본 기능을 관리합니다." },
+      { term: "신경세포", definition: "정보 전달의 기본 단위인 뉴런.", 
+        explanation: "뉴런은 전기적 신호를 생성, 전달하며 신경계의 핵심 구성원입니다." },
+      { term: "축삭", definition: "신경세포에서 신호를 전달하는 긴 돌출부.", 
+        explanation: "축삭은 신경 신호를 먼 거리로 빠르게 전달하는 역할을 합니다." },
+      { term: "수상돌기", definition: "신경세포에서 입력을 받는 가지 돌기.", 
+        explanation: "수상돌기는 다른 뉴런으로부터 오는 신호를 받아들입니다." },
+      { term: "신경말단", definition: "신경세포의 출력이 이루어지는 부위.", 
+        explanation: "신경말단은 신경 전달 물질을 분비해 다음 세포에 신호를 전달합니다." }
+    ];
+    // 11번부터 100번까지 플레이스홀더
+    for (let i = 11; i <= 100; i++) {
+      nervousSystem.push({
+        term: `신경계통 용어 ${i}`,
+        definition: `신경계통에서 중요한 용어 ${i}의 설명.`,
+        explanation: `신경계통 용어 ${i}는 신경 전달 및 기능과 관련된 플레이스홀더 용어입니다.`
+      });
+    }
+    
+    // ---------------------------------------------
+    // 전체 챕터별 플래시카드 데이터 객체 생성
+    // ---------------------------------------------
+    const flashcardsData = {
+      "해부학서론": anatomyIntro,
+      "세포와조직": cellTissue,
+      "뼈대계통": skeletalSystem,
+      "관절계통": jointSystem,
+      "근육계통": muscleSystem,
+      "신경계통": nervousSystem
+    };
+    
+    // 초기 변수 설정
+    let currentChapter = document.getElementById("chapterSelector").value;
+    let currentData = flashcardsData[currentChapter];
+    let currentIndex = 0;
+    
+    const flashcard = document.getElementById("flashcard");
+    const cardFront = document.getElementById("cardFront");
+    const cardBack = document.getElementById("cardBack");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const chapterSelector = document.getElementById("chapterSelector");
+    const toggleExplanationBtn = document.getElementById("toggleExplanation");
+    const explanationContainer = document.getElementById("explanationContainer");
+    
+    // 플래시 카드 내용 및 추가 설명 업데이트 함수
+    function updateFlashcard() {
+      const cardData = currentData[currentIndex];
+      cardFront.textContent = cardData.term;
+      cardBack.textContent = cardData.definition;
+      explanationContainer.textContent = cardData.explanation;
+      flashcard.classList.remove("flipped"); // 카드가 앞면으로 초기화
+      explanationContainer.style.display = "none";
+      toggleExplanationBtn.textContent = "설명 보기";
+    }
+    
+    // 챕터 변경 이벤트: 선택한 챕터의 데이터 로드 및 인덱스 초기화
+    chapterSelector.addEventListener("change", function() {
+      currentChapter = this.value;
+      currentData = flashcardsData[currentChapter];
+      currentIndex = 0;
+      updateFlashcard();
+    });
+    
+    // 카드 클릭 시 앞면과 뒷면 전환
+    flashcard.addEventListener("click", function() {
+      flashcard.classList.toggle("flipped");
+    });
+    
+    // 이전 버튼 이벤트
+    prevBtn.addEventListener("click", function() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateFlashcard();
+      }
+    });
+    
+    // 다음 버튼 이벤트
+    nextBtn.addEventListener("click", function() {
+      if (currentIndex < currentData.length - 1) {
+        currentIndex++;
+        updateFlashcard();
+      }
+    });
+    
+    // 설명 토글 버튼 이벤트
+    toggleExplanationBtn.addEventListener("click", function() {
+      if (explanationContainer.style.display === "none") {
+        explanationContainer.style.display = "block";
+        toggleExplanationBtn.textContent = "설명 숨기기";
+      } else {
+        explanationContainer.style.display = "none";
+        toggleExplanationBtn.textContent = "설명 보기";
+      }
+    });
+    
+    // 초기 플래시 카드 표시
+    updateFlashcard();
+  </script>
+</body>
+</html>
