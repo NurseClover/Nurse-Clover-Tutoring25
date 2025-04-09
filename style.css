@@ -1,1 +1,47 @@
-...
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>타자 연습</title>
+  <style>
+    body { font-family: Arial; text-align: center; padding: 30px; background: #f2f9ff; }
+    input { font-size: 18px; padding: 10px; width: 300px; }
+  </style>
+  <script src="shared.js"></script>
+</head>
+<body>
+  <div><button onclick="location.href='home.html'">🏠 홈으로</button></div>
+  <h2>타자 연습 (한글 → 영어)</h2>
+  <select id="chapterSelect">
+    <option value="서론">서론</option>
+    <option value="세포와조직">세포와조직</option>
+    <option value="뼈대계통">뼈대계통</option>
+    <option value="관절계통">관절계통</option>
+    <option value="근육계통">근육계통</option>
+    <option value="신경계통">신경계통</option>
+  </select>
+  <br><br>
+  <button onclick="startTyping()">시작</button>
+  <div id="koreanWord" style="margin:20px; font-size:24px;"></div>
+  <input type="text" id="inputBox" placeholder="영어로 입력하세요" />
+  <div id="feedback"></div>
+
+  <script>
+    let currentChapter = "서론";
+    let currentIndex = 0;
+    const koreanEl = document.getElementById("koreanWord");
+    const inputBox = document.getElementById("inputBox");
+    const feedback = document.getElementById("feedback");
+
+    document.getElementById("chapterSelect").addEventListener("change", (e) => {
+      currentChapter = e.target.value;
+      currentIndex = 0;
+      inputBox.value = "";
+      feedback.textContent = "";
+    });
+
+    inputBox.addEventListener("keyup", (e) => {
+      if (e.key === "Enter") {
+        const word = flashcardsData[currentChapter][currentIndex];
+        if (input
