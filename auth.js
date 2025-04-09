@@ -19,7 +19,7 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 // 승인된 이메일 리스트
-const allowedEmails = ["qkrwjddus1322@naver.com"];
+const allowedEmails = ["qkrwjddus1234567@gmail.com"];
 
 // 로그인 시도
 window.handleGoogleLogin = function () {
