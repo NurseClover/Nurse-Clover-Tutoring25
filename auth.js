@@ -19,7 +19,7 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 // ☑️ 승인된 사용자 이메일만 허용
-const allowedEmails = ["qkrwjddus1322@naver.com"]; // 추가 가능
+const allowedEmails = ["qkrwjddus1234567@gmail.com"]; // 추가 가능
 
 document.getElementById("googleLogin").addEventListener("click", () => {
   signInWithPopup(auth, provider)
