@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>카드 뒤집기 퀴즈</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🧠 카드 뒤집기 퀴즈</h1>
+  <div id="controls">
+    <label for="chapter">챕터 선택:</label>
+    <select id="chapter">
+      <option value="서론">서론</option>
+      <option value="세포와조직">세포와조직</option>
+      <option value="뼈대계통">뼈대계통</option>
+      <option value="관절계통">관절계통</option>
+      <option value="근육계통">근육계통</option>
+      <option value="신경계통">신경계통</option>
+      <option value="랜덤">랜덤</option>
+    </select>
+    <button onclick="startQuiz()">시작</button>
+    <span id="timer">05:00</span>
+    <span id="score">정답: 0/0</span>
+    <button onclick="location.reload()">🔄 다시 시작</button>
+    <button onclick="location.href='home.html'">🏠 홈으로</button>
+  </div>
+  <div id="quiz-container"></div>
+  <script src="shared.js"></script>
+  <script src="flipquiz.js"></script>
+</body>
+</html>
