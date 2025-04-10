@@ -1,6 +1,30 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyByzEr81hS4o1fDAhLq2Jayaxs14qzAUdQ",
+    authDomain: "jn-tutoring.firebaseapp.com",
+    projectId: "jn-tutoring",
+    storageBucket: "jn-tutoring.appspot.com",
+    messagingSenderId: "684996310822",
+    appId: "1:684996310822:web:d764c0adfcfed09cbcf3e7",
+    measurementId: "G-RJYDD02SE2"
+  };
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth();
+
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      alert("로그인이 필요합니다.");
+      window.location.href = "login.html";
+    }
+  });
+</script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>카드 뒤집기 퀴즈</title>
